@@ -72,6 +72,8 @@ n_distinct(occupation$GEO)
 occupation_table<- subset(occupation, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,SCALAR_ID, VECTOR, COORDINATE, STATUS, SYMBOL, TERMINATED, DECIMALS))
 #change reference years
 occupation_cl<- occupation_table[occupation_table$ï..REF_DATE>2000,]
+occupation_w<- spread(occupation_cl, Statistics, VALUE)
+occupation_w<- occupation_w[-grep("Elementary school", occupation_w$Selected.characteristics),]
 
 leisure_table<-subset(leisure, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,SCALAR_ID, VECTOR, COORDINATE, STATUS, SYMBOL, TERMINATED, DECIMALS))
 #change reference years
@@ -96,3 +98,18 @@ tax_w<- tax_w[-6]
 
 tax_w<- tax_w[tax_w$UOM!="Percent",]
 
+##Feature Selection
+
+#preliminary analysis
+
+#look at new cancer cases by geographic region
+summary(cancer_w2)
+
+barplot(cancer_w2$`Cancer incidence (age-standardized rate per 100,000 population)`, names.arg = cancer_w2$ï..REF_DATE )
+barplot(cancer_w2$`Cancer incidence (age-standardized rate per 100,000 population)`, names.arg = cancer_w2$GEO)
+
+barplot(cancer_w2$`Number of new cancer cases`, names.arg = cancer_w2$ï..REF_DATE)
+
+hist(cancer_w2$`Cancer incidence (age-standardized rate per 100,000 population)`, na.rm=TRUE)
+hist(cancer_w2$`Cancer incidence (rate per 100,000 population)`, na.rm=TRUE)
+hist(cancer_w2$`Number of new cancer cases`, na.rm=TRUE)
