@@ -13,11 +13,12 @@ cancer_table<- subset(cancer_incidence, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,S
 > insert link of file here
 
 Characteristics columns was brought to three values of interest
--Cancer incidence (age-standardized rate per 100,000 population)
--Cancer incidence (rate per 100,00 population)
--Number of new cancer cases
 
-Spread table so that these characteristic values belonged in their own column
+1. Cancer incidence (age-standardized rate per 100,000 population)
+2. Cancer incidence (rate per 100,00 population)
+3. Number of new cancer cases
+
+Spread table so that these characteristics and their values belong in their own column
 >insert link or file here
 
 
@@ -28,7 +29,7 @@ n_distinct(cancer_cl$GEO)
 To reduce cardinality of the geographic locations they are divided into groups based on their province
 since we are looking at the relationship between cancer incidence and geographic location national 'peer groups' are also removed from the GEO column
 -insert file for: 
->cancer_on
+>cancer_ON
 >cancer_QC
 >cancer_AB
 >cancer_BC
