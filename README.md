@@ -11,6 +11,7 @@ cancer_table<- subset(cancer_incidence, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,S
 
 293722 observations while the dataset is formatted this way
 > insert link of file here
+
 67782 observations after some cleaning 
 > insert file link here
 
