@@ -9,8 +9,10 @@ Removed columns from cancer incidence dataset that did not contain information
 
 cancer_table<- subset(cancer_incidence, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,SCALAR_ID, VECTOR, COORDINATE, STATUS, SYMBOL, TERMINATED, DECIMALS))
 
-293722 rows while the dataset is formatted this way
+293722 observations while the dataset is formatted this way
 > insert link of file here
+67782 observations after some cleaning 
+> insert file link here
 
 Characteristics columns was brought to three values of interest
 
