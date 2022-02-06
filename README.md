@@ -21,7 +21,7 @@ Characteristics columns was brought to three values of interest
 3. Number of new cancer cases
 
 Spread table so that these characteristics and their values belong in their own column
->insert link or file here
+>cancer_w3
 
 
 ##count number of region in occupation and cancer
