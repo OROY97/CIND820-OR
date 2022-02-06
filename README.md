@@ -10,10 +10,9 @@ Removed columns from cancer incidence dataset that did not contain information
 cancer_table<- subset(cancer_incidence, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,SCALAR_ID, VECTOR, COORDINATE, STATUS, SYMBOL, TERMINATED, DECIMALS))
 
 293722 observations while the dataset is formatted this way
-> insert link of file here
 
 67782 observations after some cleaning 
-> insert file link here
+> cancer_cl.csv
 
 Characteristics columns was brought to three values of interest
 
@@ -31,7 +30,6 @@ n_distinct(cancer_cl$GEO)
 
 To reduce cardinality of the geographic locations they are divided into groups based on their province
 since we are looking at the relationship between cancer incidence and geographic location national 'peer groups' are also removed from the GEO column
--insert file for: 
 >cancer_ON
 >cancer_QC
 >cancer_AB
