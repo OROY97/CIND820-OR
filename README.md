@@ -21,6 +21,7 @@ Characteristics columns was brought to three values of interest
 3. Number of new cancer cases
 
 Spread table so that these characteristics and their values belong in their own column
+
 For preliminary analysis only the age-standardized rate of incidence is used as this is to help adjust for locations that have older age groups. Although it is important to note that regions with older age groups would be expected to have a higher rate of incidence even with the age standardized rate.
 >cancer_w4
 
