@@ -1,162 +1,30 @@
-"","ï..REF_DATE","GEO","Sex","Selected.sites.of.cancer..ICD.O.3.","Cancer incidence (age-standardized rate per 100,000 population)","Cancer incidence (rate per 100,000 population)","Number of new cancer cases"
-"989","2001/2003","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",569.5,NA,NA
-"990","2001/2003","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,255.7,NA
-"991","2001/2003","Northwest Territories","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",NA,32,NA
-"992","2001/2003","Northwest Territories","Both sexes","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",129.9,NA,NA
-"993","2001/2003","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",590.2,NA,NA
-"994","2001/2003","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,282,NA
-"995","2001/2003","Northwest Territories","Females","Bronchus and lung cancer [C34.0-C34.9]",NA,33.2,NA
-"996","2001/2003","Northwest Territories","Females","Female breast cancer [C50.0-C50.9]",184.7,NA,NA
-"997","2001/2003","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",594.2,NA,NA
-"998","2001/2003","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,231.3,NA
-"999","2001/2003","Northwest Territories","Males","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",188,NA,NA
-"1000","2001/2003","Northwest Territories","Males","Prostate cancer [C61.9]",NA,38.6,NA
-"3056","2002/2004","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",573.8,NA,NA
-"3057","2002/2004","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,284.9,NA
-"3058","2002/2004","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,249.4,NA
-"3059","2002/2004","Northwest Territories","Males","Bronchus and lung cancer [C34.0-C34.9]",NA,30.2,NA
-"3060","2002/2004","Northwest Territories","Males","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",268.2,NA,NA
-"4173","2003/2005","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,263,NA
-"4174","2003/2005","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,265.4,NA
-"4175","2003/2005","Northwest Territories","Females","Female breast cancer [C50.0-C50.9]",157.6,NA,NA
-"4176","2003/2005","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",673.5,NA,NA
-"4177","2003/2005","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,260.7,NA
-"5053","2004/2006","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",426.1,NA,NA
-"5054","2004/2006","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,224.4,NA
-"5055","2004/2006","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,266.7,NA
-"5056","2004/2006","Northwest Territories","Males","Bronchus and lung cancer [C34.0-C34.9]",NA,37,NA
-"5721","2005/2007","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,265.5,NA
-"5722","2005/2007","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,248.3,NA
-"5723","2005/2007","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",629,NA,NA
-"6308","2006/2008","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,261.7,NA
-"6309","2006/2008","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,255.9,NA
-"6310","2006/2008","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,267.1,NA
-"6789","2007/2009","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",553.4,NA,NA
-"6790","2007/2009","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,275.5,NA
-"7228","2008/2010","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,277.4,NA
-"7229","2008/2010","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,269.1,NA
-"7611","2009/2011","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,300.2,NA
-"7612","2009/2011","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,301.1,NA
-"7613","2009/2011","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,299.3,NA
-"7858","2010/2012","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,306.8,NA
-"7859","2010/2012","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,315.2,NA
-"8093","2011/2013","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,297.8,NA
-"8094","2011/2013","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,313.1,NA
-"8314","2012/2014","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,312,NA
-"8508","2013/2015","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,314.6,NA
-"8509","2013/2015","Northwest Territories","Females","All invasive primary cancer sites (including in situ bladder)",NA,309.8,NA
-"8510","2013/2015","Northwest Territories","Males","All invasive primary cancer sites (including in situ bladder)",NA,319.2,NA
-"2260","2001/2003","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,306.2,NA
-"2261","2001/2003","Yukon","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",78.8,NA,NA
-"2262","2001/2003","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",436.9,NA,NA
-"2263","2001/2003","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,278.3,NA
-"2264","2001/2003","Yukon","Females","Bronchus and lung cancer [C34.0-C34.9]",NA,22.3,NA
-"2265","2001/2003","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",629.8,NA,NA
-"2266","2001/2003","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,333.2,NA
-"2267","2001/2003","Yukon","Males","Prostate cancer [C61.9]",172.8,NA,NA
-"3727","2002/2004","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",513.4,NA,NA
-"3728","2002/2004","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,318.1,NA
-"3729","2002/2004","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,296.6,NA
-"3730","2002/2004","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,338.9,NA
-"4706","2003/2005","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",484.6,NA,NA
-"4707","2003/2005","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,307.6,NA
-"4708","2003/2005","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",433,NA,NA
-"4709","2003/2005","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,302.7,NA
-"4710","2003/2005","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",541.6,NA,NA
-"4711","2003/2005","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,312.2,NA
-"5445","2004/2006","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,308.5,NA
-"5446","2004/2006","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,320.4,NA
-"5447","2004/2006","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,297.1,NA
-"6069","2005/2007","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,320.5,NA
-"6070","2005/2007","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,348.7,NA
-"6071","2005/2007","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,293.4,NA
-"6578","2006/2008","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,301.3,NA
-"6579","2006/2008","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",418,NA,NA
-"6580","2006/2008","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,324.2,NA
-"6581","2006/2008","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,279.4,NA
-"7039","2007/2009","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",442.5,NA,NA
-"7040","2007/2009","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,332.1,NA
-"7041","2007/2009","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,340.1,NA
-"7042","2007/2009","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,324.4,NA
-"7443","2008/2010","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,353.4,NA
-"7444","2008/2010","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,327.5,NA
-"7718","2009/2011","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",407.6,NA,NA
-"7961","2010/2012","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",410.6,NA,NA
-"7962","2010/2012","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",388.8,NA,NA
-"7963","2010/2012","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,308.4,NA
-"7964","2010/2012","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,359.9,NA
-"8403","2012/2014","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",349.4,NA,NA
-"8404","2012/2014","Yukon","Females","All invasive primary cancer sites (including in situ bladder)",NA,298.7,NA
-"8405","2012/2014","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,368.1,NA
-"8590","2013/2015","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,361.7,NA
-"8591","2013/2015","Yukon","Males","All invasive primary cancer sites (including in situ bladder)",NA,399.7,NA
-"1045","2001/2003","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",819.3,NA,NA
-"1046","2001/2003","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,202.8,NA
-"1047","2001/2003","Nunavut","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",381.9,NA,NA
-"1048","2001/2003","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",846.3,NA,NA
-"1049","2001/2003","Nunavut","Females","Bronchus and lung cancer [C34.0-C34.9]",365.9,NA,NA
-"1050","2001/2003","Nunavut","Females","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",165.4,NA,NA
-"1051","2001/2003","Nunavut","Females","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",NA,36.2,NA
-"1052","2001/2003","Nunavut","Females","Female breast cancer [C50.0-C50.9]",17.6,NA,NA
-"1053","2001/2003","Nunavut","Females","Female breast cancer [C50.0-C50.9]",NA,12.1,NA
-"1054","2001/2003","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",857.6,NA,NA
-"1055","2001/2003","Nunavut","Males","Bronchus and lung cancer [C34.0-C34.9]",383.5,NA,NA
-"1056","2001/2003","Nunavut","Males","Prostate cancer [C61.9]",116.2,NA,NA
-"3076","2002/2004","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",712.3,NA,NA
-"3077","2002/2004","Nunavut","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",352.7,NA,NA
-"3078","2002/2004","Nunavut","Both sexes","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",NA,28.4,NA
-"3079","2002/2004","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",695.2,NA,NA
-"3080","2002/2004","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",NA,189.1,NA
-"3081","2002/2004","Nunavut","Females","Bronchus and lung cancer [C34.0-C34.9]",356.7,NA,NA
-"3082","2002/2004","Nunavut","Females","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",NA,23.6,NA
-"3083","2002/2004","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",766.9,NA,NA
-"3084","2002/2004","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",NA,197,NA
-"3085","2002/2004","Nunavut","Males","Bronchus and lung cancer [C34.0-C34.9]",345.4,NA,NA
-"3086","2002/2004","Nunavut","Males","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",NA,32.8,NA
-"3087","2002/2004","Nunavut","Males","Prostate cancer [C61.9]",NA,21.9,NA
-"4191","2003/2005","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",750.3,NA,NA
-"4192","2003/2005","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,206.7,NA
-"4193","2003/2005","Nunavut","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",322.5,NA,NA
-"4194","2003/2005","Nunavut","Both sexes","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",158.2,NA,NA
-"4195","2003/2005","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",NA,208.8,NA
-"4196","2003/2005","Nunavut","Females","Bronchus and lung cancer [C34.0-C34.9]",307.8,NA,NA
-"4197","2003/2005","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",816.4,NA,NA
-"4198","2003/2005","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",NA,204.7,NA
-"4199","2003/2005","Nunavut","Males","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",184.9,NA,NA
-"5068","2004/2006","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",685.5,NA,NA
-"5069","2004/2006","Nunavut","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",286.3,NA,NA
-"5070","2004/2006","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",649.5,NA,NA
-"5071","2004/2006","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",NA,205.1,NA
-"5072","2004/2006","Nunavut","Females","Bronchus and lung cancer [C34.0-C34.9]",275.2,NA,NA
-"5073","2004/2006","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",715.4,NA,NA
-"5074","2004/2006","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",NA,212.2,NA
-"5075","2004/2006","Nunavut","Males","Bronchus and lung cancer [C34.0-C34.9]",295.7,NA,NA
-"5734","2005/2007","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",694.1,NA,NA
-"5735","2005/2007","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",NA,210.7,NA
-"5736","2005/2007","Nunavut","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",258.5,NA,NA
-"5737","2005/2007","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",NA,212.6,NA
-"5738","2005/2007","Nunavut","Females","Bronchus and lung cancer [C34.0-C34.9]",245.9,NA,NA
-"5739","2005/2007","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",702.7,NA,NA
-"5740","2005/2007","Nunavut","Males","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",191.4,NA,NA
-"5741","2005/2007","Nunavut","Males","Prostate cancer [C61.9]",NA,10.4,NA
-"6322","2006/2008","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",NA,198.2,NA
-"6323","2006/2008","Nunavut","Females","Bronchus and lung cancer [C34.0-C34.9]",217.2,NA,NA
-"6324","2006/2008","Nunavut","Males","Prostate cancer [C61.9]",NA,20.5,NA
-"6800","2007/2009","Nunavut","Females","Female breast cancer [C50.0-C50.9]",NA,21.6,NA
-"6801","2007/2009","Nunavut","Males","Prostate cancer [C61.9]",NA,10.1,NA
-"7238","2008/2010","Nunavut","Both sexes","Bronchus and lung cancer [C34.0-C34.9]",205.3,NA,NA
-"7239","2008/2010","Nunavut","Both sexes","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",NA,25.6,NA
-"7240","2008/2010","Nunavut","Females","All invasive primary cancer sites (including in situ bladder)",NA,169.7,NA
-"7241","2008/2010","Nunavut","Males","Bronchus and lung cancer [C34.0-C34.9]",235.1,NA,NA
-"7242","2008/2010","Nunavut","Males","Colon, rectum and rectosigmoid junction cancer [C18.0-C18.9, C19.9, C20.9, C26.0]",NA,19.7,NA
-"7617","2009/2011","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",496.6,NA,NA
-"7618","2009/2011","Nunavut","Males","Prostate cancer [C61.9]",NA,19.3,NA
-"7862","2010/2012","Nunavut","Males","Prostate cancer [C61.9]",NA,18.9,NA
-"8097","2011/2013","Nunavut","Females","Female breast cancer [C50.0-C50.9]",NA,19.9,NA
-"8098","2011/2013","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",384.1,NA,NA
-"8099","2011/2013","Nunavut","Males","Prostate cancer [C61.9]",NA,18.5,NA
-"8317","2012/2014","Nunavut","Females","Female breast cancer [C50.0-C50.9]",NA,19.5,NA
-"8318","2012/2014","Nunavut","Males","Prostate cancer [C61.9]",NA,18.2,NA
-"8513","2013/2015","Nunavut","Females","Female breast cancer [C50.0-C50.9]",NA,19.2,NA
-"8514","2013/2015","Nunavut","Males","All invasive primary cancer sites (including in situ bladder)",381.7,NA,NA
-"8515","2013/2015","Nunavut","Males","Prostate cancer [C61.9]",NA,9,NA
+"","ï..REF_DATE","GEO","Sex","Selected.sites.of.cancer..ICD.O.3.","Cancer incidence (age-standardized rate per 100,000 population)"
+"63","2001/2003","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",569.5
+"202","2002/2004","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",589.2
+"432","2004/2006","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",514.2
+"709","2007/2009","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",553.4
+"991","2012/2014","Northwest Territories","Both sexes","All invasive primary cancer sites (including in situ bladder)",515.3
+"134","2001/2003","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",515
+"263","2002/2004","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",513.4
+"383","2003/2005","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",484.6
+"485","2004/2006","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",463.2
+"577","2005/2007","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",468
+"671","2006/2008","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",416.9
+"752","2007/2009","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",442.5
+"821","2008/2010","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",436
+"872","2009/2011","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",439.7
+"926","2010/2012","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",410.6
+"967","2011/2013","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",392.9
+"1010","2012/2014","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",391.6
+"1053","2013/2015","Yukon","Both sexes","All invasive primary cancer sites (including in situ bladder)",427.8
+"66","2001/2003","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",819.3
+"205","2002/2004","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",712.3
+"323","2003/2005","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",750.3
+"435","2004/2006","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",685.5
+"527","2005/2007","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",694.1
+"712","2007/2009","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",483.6
+"854","2009/2011","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",495.5
+"907","2010/2012","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",454.1
+"954","2011/2013","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",425
+"994","2012/2014","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",418.2
+"1034","2013/2015","Nunavut","Both sexes","All invasive primary cancer sites (including in situ bladder)",393.6
