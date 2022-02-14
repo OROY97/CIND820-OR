@@ -4,7 +4,7 @@ Capstone course project repository
 classification and regression analysis & predictive analytics project 
 
 ## Preliminary analysis for CIND 820
-
+USING R
 Removed columns from cancer incidence dataset that did not contain information 
 
 cancer_table<- subset(cancer_incidence, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,SCALAR_ID, VECTOR, COORDINATE, STATUS, SYMBOL, TERMINATED, DECIMALS))
