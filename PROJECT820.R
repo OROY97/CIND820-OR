@@ -55,6 +55,17 @@ summary(cancer_w4)
 
 hist(cancer_w4$`Cancer incidence (age-standardized rate per 100,000 population)`)
 #normal distribution
+
+hist(cancer_w4$`Cancer incidence (age-standardized rate per 100,000 population)`, xlab = "Cancer Incidence", main = "Canada Distribution", col = "red", breaks=50)
+
+hist(cancer_ON$`Cancer incidence (age-standardized rate per 100,000 population)`,xlab = "Cancer Incidence",main = "Ontario Distribution", col ="blue", breaks = 25)
+hist(cancer_BC$`Cancer incidence (age-standardized rate per 100,000 population)`,xlab = "Cancer Incidence",main = "British Columbia Distribution", col ="blue", breaks = 25)
+hist(cancer_QC$`Cancer incidence (age-standardized rate per 100,000 population)`,xlab = "Cancer Incidence",main = "Quebec Distribution", col ="blue", breaks = 25)
+hist(cancer_midwest$`Cancer incidence (age-standardized rate per 100,000 population)`,xlab = "Cancer Incidence",main = "Midwest Distribution", col ="blue", breaks = 25)
+hist(cancer_maritimes$`Cancer incidence (age-standardized rate per 100,000 population)`,xlab = "Cancer Incidence",main = "Maritimes Distribution", col ="blue", breaks = 25)
+hist(cancer_territories$`Cancer incidence (age-standardized rate per 100,000 population)`,xlab = "Cancer Incidence",main = "Territories Distribution", col ="blue", breaks = 15)
+
+
 ######################################################################################
 
 
