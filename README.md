@@ -4,7 +4,7 @@ Capstone course project repository
 classification and regression analysis & predictive analytics project 
 
 ## Preliminary analysis for CIND 820
-
+USING R
 Removed columns from cancer incidence dataset that did not contain information 
 
 cancer_table<- subset(cancer_incidence, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,SCALAR_ID, VECTOR, COORDINATE, STATUS, SYMBOL, TERMINATED, DECIMALS))
@@ -21,6 +21,7 @@ Characteristics columns was brought to three values of interest
 3. Number of new cancer cases
 
 Spread table so that these characteristics and their values belong in their own column
+
 For preliminary analysis only the age-standardized rate of incidence is used as this is to help adjust for locations that have older age groups. Although it is important to note that regions with older age groups would be expected to have a higher rate of incidence even with the age standardized rate.
 >cancer_w4
 
