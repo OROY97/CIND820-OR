@@ -184,6 +184,35 @@ ts.plot(ts_maritimes.2)
 ts_territories.2<-ts(data = cancer_territories.2, frequency = n_distinct(cancer_maritimes.2$GEO) ,start = 2001, end = 2015)
 ts.plot(ts_territories.2)
 ```
-```{r}
+
+```{r preliminary time series analysis}
+##All cancer
+
+ts.plot(ts_ON.2[,4], main = "All sites of cancer")
+ts.plot(ts_QC.2[,4], main = "All sites of cancer")
+ts.plot(ts_BC.2[,4], main = "All sites of cancer")
+ts.plot(ts_midwest.2[,4], main = "All sites of cancer")
+ts.plot(ts_maritimes.2[,4], main = "All sites of cancer")
+ts.plot(ts_territories.2[,4], main = "All sites of cancer")
+
+#Lung
+
+ts.plot(ts_ON.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_QC.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_BC.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_midwest.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_maritimes.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_territories.2[,5], main="Bronchus and lung cancer")
+
+
+#Colon
+
+ts.plot(ts_ON.2[,6], main="Colon cancer")
+ts.plot(ts_QC.2[,6], main="Colon cancer")
+ts.plot(ts_BC.2[,6], main="Colon cancer")
+ts.plot(ts_midwest.2[,6], main="Colon cancer")
+ts.plot(ts_maritimes.2[,6], main="Colon cancer")
+ts.plot(ts_territories.2[,6], main="Colon cancer")
+```
 
 
