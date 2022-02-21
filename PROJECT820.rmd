@@ -162,8 +162,28 @@ cancer_NVT.2<-cancer_2.2[grep("Nunavut", cancer_2.2$GEO),]
 cancer_territories.2<- rbind(cancer_NWT.2,cancer_YT.2,cancer_NVT.2)
 
 
-```
+```{r preliminary time series analysis}
+##try time series analysis
+###Just a peek
 
+ts_ON.2<-ts(data = cancer_ON.2, frequency = n_distinct(cancer_ON.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_ON.2)
+
+ts_QC.2<-ts(data = cancer_QC.2, frequency = n_distinct(cancer_QC.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_QC.2)
+
+ts_BC.2<-ts(data = cancer_BC.2, frequency = n_distinct(cancer_BC.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_BC.2)
+
+ts_midwest.2<-ts(data = cancer_midwest.2, frequency = n_distinct(cancer_midwest.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_midwest.2)
+
+ts_maritimes.2<-ts(data = cancer_maritimes.2,frequency = n_distinct(cancer_maritimes.2$GEO) , start = 2001, end = 2015)
+ts.plot(ts_maritimes.2)
+
+ts_territories.2<-ts(data = cancer_territories.2, frequency = n_distinct(cancer_maritimes.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_territories.2)
+```
 ```{r}
 
 
