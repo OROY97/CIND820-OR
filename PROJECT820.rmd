@@ -214,5 +214,90 @@ ts.plot(ts_midwest.2[,6], main="Colon cancer")
 ts.plot(ts_maritimes.2[,6], main="Colon cancer")
 ts.plot(ts_territories.2[,6], main="Colon cancer")
 ```
+```{r}
+plot(decompose(ts_ON.2[,4]))
+plot(decompose(ts_ON.2[,5]))
+plot(decompose(ts_ON.2[,6]))
+#plot(decompose(ts_ON.2[,7], na.action(na.pass)))
+#plot(decompose(ts_ON.2[,8],na.action(na.pass)))
 
+plot(decompose(ts_QC.2[,4]))
+plot(decompose(ts_QC.2[,5]))
+plot(decompose(ts_QC.2[,6]))
+
+plot(decompose(ts_BC.2[,4]))
+plot(decompose(ts_BC.2[,5]))
+plot(decompose(ts_BC.2[,6]))
+
+plot(decompose(ts_midwest.2[,4]))
+plot(decompose(ts_midwest.2[,5]))
+plot(decompose(ts_midwest.2[,6]))
+
+plot(decompose(ts_maritimes.2[,4]))
+plot(decompose(ts_maritimes.2[,5]))
+plot(decompose(ts_maritimes.2[,6]))
+
+plot(decompose(ts_territories.2[,4]))
+plot(decompose(ts_territories.2[,5]))
+plot(decompose(ts_territories.2[,6]))
+
+
+```
+
+```{r preliminary time series analysis-2}
+###check ACF to determine what predictive model to use
+#Ontario
+acf(ts_ON.2[,4], type = "correlation")
+acf(ts_ON.2[,4], type= "partial")
+acf(ts_ON.2[,5], type = "correlation")
+acf(ts_ON.2[,5], type= "partial")
+acf(ts_ON.2[,6], type = "correlation")
+acf(ts_ON.2[,6], type= "partial")
+
+#Quebec
+acf(ts_QC.2[,4], type = "correlation")
+acf(ts_QC.2[,4], type= "partial")
+acf(ts_QC.2[,5], type = "correlation")
+acf(ts_QC.2[,5], type= "partial")
+acf(ts_QC.2[,6], type = "correlation")
+acf(ts_QC.2[,6], type= "partial")
+
+#BRITISH COLUMBIA
+acf(ts_BC.2[,4], type = "correlation")
+acf(ts_BC.2[,4], type= "partial")
+acf(ts_BC.2[,5], type = "correlation")
+acf(ts_BC.2[,5], type= "partial")
+acf(ts_BC.2[,6], type = "correlation")
+acf(ts_BC.2[,6], type= "partial")
+
+##MIDWEST
+acf(ts_midwest.2[,4], type = "correlation")
+acf(ts_midwest.2[,4], type= "partial")
+acf(ts_midwest.2[,5], type = "correlation")
+acf(ts_midwest.2[,5], type= "partial")
+acf(ts_midwest.2[,6], type = "correlation")
+acf(ts_midwest.2[,6], type= "partial")
+
+#Maritimes
+acf(ts_maritimes.2[,4], type = "correlation")
+acf(ts_maritimes.2[,4], type= "partial")
+acf(ts_maritimes.2[,5], type = "correlation")
+acf(ts_maritimes.2[,5], type= "partial")
+acf(ts_maritimes.2[,6], type = "correlation")
+acf(ts_maritimes.2[,6], type= "partial")
+
+#territories
+acf(ts_territories.2[,4], type = "correlation")
+acf(ts_territories.2[,4], type= "partial")
+acf(ts_territories.2[,5], type = "correlation")
+acf(ts_territories.2[,5], type= "partial")
+acf(ts_territories.2[,6], type = "correlation")
+acf(ts_territories.2[,6], type= "partial")
+
+#####
+###doesn't look like any of them are sufficiently stationary
+##makes me want to use ARIMA
+##time series regression
+###see decomposition
+```
 
