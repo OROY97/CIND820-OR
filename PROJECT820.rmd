@@ -300,4 +300,30 @@ acf(ts_territories.2[,6], type= "partial")
 ##time series regression
 ###see decomposition
 ```
+```{r preliminary time series analysis-3}
+##try ARIMA model
 
+##time series regression [tsr]-> tslm
+tsr_ON<- tslm(formula= ts_ON.2[,4]~ts_ON.2[,2]+ts_ON.2[,3], data=ts_ON.2)
+summary(tsr_ON)
+tsr_ON.5<- tslm(formula= ts_ON.2[,5]~ts_ON.2[,2]+ts_ON.2[,3], data=ts_ON.2)
+summary(tsr_ON.5)
+tsr_ON.6<- tslm(formula= ts_ON.2[,6]~ts_ON.2[,2]+ts_ON.2[,3], data=ts_ON.2)
+summary(tsr_ON.6)
+tsr_ON.7<- tslm(formula= ts_ON.2[,7]~ts_ON.2[,2], data=ts_ON.2)
+summary(tsr_ON.7)
+tsr_ON.8<- tslm(formula= ts_ON.2[,8]~ts_ON.2[,2], data=ts_ON.2)
+summary(tsr_ON.8)
+
+tsr_QC<- tslm(formula = ts_QC.2[,4]~ts_QC.2[,2]+ts_QC.2[,3], data = ts_QC.2)
+summary(tsr_QC)
+tsr_QC.5<- tslm(formula= ts_QC.2[,5]~ts_QC.2[,2]+ts_QC.2[,3], data=ts_QC.2)
+summary(tsr_QC.5)
+tsr_QC.6<- tslm(formula= ts_QC.2[,6]~ts_QC.2[,2]+ts_QC.2[,3], data=ts_QC.2)
+summary(tsr_QC.6)
+tsr_QC.7<- tslm(formula= ts_QC.2[,7]~ts_QC.2[,2], data=ts_QC.2)
+summary(tsr_QC.7)
+tsr_QC.8<- tslm(formula= ts_QC.2[,8]~ts_QC.2[,2], data=ts_QC.2)
+summary(tsr_QC.8)
+
+```
