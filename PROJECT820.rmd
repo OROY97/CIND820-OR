@@ -23,6 +23,10 @@ library(dplyr)
 library(tidyr)
 library(car)
 library(stats)
+library(lubridate)
+library(ggplot2)
+library(forecast)
+library(tseries)
 
 ```
 
@@ -183,6 +187,9 @@ ts.plot(ts_maritimes.2)
 
 ts_territories.2<-ts(data = cancer_territories.2, frequency = n_distinct(cancer_maritimes.2$GEO) ,start = 2001, end = 2015)
 ts.plot(ts_territories.2)
+
+####SO the frequency used is the number of distinct values in the GEO feature. 
+####This is because this is the "interval" that repeats over time.
 ```
 
 ```{r preliminary time series analysis}
@@ -296,9 +303,105 @@ acf(ts_territories.2[,6], type= "partial")
 
 #####
 ###doesn't look like any of them are sufficiently stationary
+##might have to difference them
 ##makes me want to use ARIMA
 ##time series regression
 ###see decomposition
+```
+```{r preliminary time series analysis.stationarity}
+##tests for stationarity
+#ljung-box - non-stationary will have low p-value
+##other tests indicated a lag of 6 so we will see how this changes the ljung-box test
+Box.test(ts_ON.2[,4], type="Ljung-Box")
+Box.test(ts_ON.2[,5], type="Ljung-Box")
+Box.test(ts_ON.2[,6], type="Ljung-Box")
+
+Box.test(ts_QC.2[,4], type="Ljung-Box")##fail to reject null of stationarity
+Box.test(ts_QC.2[,5], type="Ljung-Box")
+Box.test(ts_QC.2[,6], type="Ljung-Box")
+
+Box.test(ts_BC.2[,4], type="Ljung-Box")
+Box.test(ts_BC.2[,5], type="Ljung-Box")
+Box.test(ts_BC.2[,6], type="Ljung-Box")
+
+Box.test(ts_midwest.2[,4], type="Ljung-Box")
+Box.test(ts_midwest.2[,5], type="Ljung-Box")
+Box.test(ts_midwest.2[,6], type="Ljung-Box")##fail to reject null of stationarity
+
+Box.test(ts_maritimes.2[,4], type="Ljung-Box")
+Box.test(ts_maritimes.2[,5], type="Ljung-Box")
+Box.test(ts_maritimes.2[,6], type="Ljung-Box")
+
+Box.test(ts_territories.2[,4], type="Ljung-Box")
+Box.test(ts_territories.2[,5], type="Ljung-Box")
+Box.test(ts_territories.2[,6], type="Ljung-Box")
+#generally reject the null that these are stationary time series
+
+#stationarity might indicate that there is an equally likely 
+#chance of cancer diagnosis regardless of location
+```
+
+
+```{r preliminary time series analysis.stationarity}
+#Augmented dickey-fuller t-stat test for unit root
+options(warn = -1)
+#non-sationary has a large p-value
+adf.test(ts_ON.2[,4])
+adf.test(ts_ON.2[,5])
+adf.test(ts_ON.2[,6])
+
+adf.test(ts_QC.2[,4])
+adf.test(ts_QC.2[,5])
+adf.test(ts_QC.2[,6])
+
+adf.test(ts_BC.2[,4])
+adf.test(ts_BC.2[,5])
+adf.test(ts_BC.2[,6])
+
+adf.test(ts_midwest.2[,4])
+adf.test(ts_midwest.2[,5])
+adf.test(ts_midwest.2[,6])
+
+adf.test(ts_maritimes.2[,4])
+adf.test(ts_maritimes.2[,5])
+adf.test(ts_maritimes.2[,6])
+
+adf.test(ts_territories.2[,4])
+adf.test(ts_territories.2[,5])##fail to reject null of non-stationarity
+adf.test(ts_territories.2[,6])
+##reject the null of non-stationarity for all except ^^
+```
+
+
+```{r preliminary time series analysis.stationarity}
+##KPSS for level or trend stationarity
+options(warn = -1)
+## lower p-value indicates non stationarity
+kpss.test(ts_ON.2[,4], null = "Trend")
+kpss.test(ts_ON.2[,5], null = "Trend")
+kpss.test(ts_ON.2[,6], null = "Trend")
+
+kpss.test(ts_QC.2[,4], null = "Trend")
+kpss.test(ts_QC.2[,5], null = "Trend")
+kpss.test(ts_QC.2[,6], null = "Trend")
+
+kpss.test(ts_BC.2[,4], null = "Trend")
+kpss.test(ts_BC.2[,5], null = "Trend")
+kpss.test(ts_BC.2[,6], null = "Trend")
+
+kpss.test(ts_midwest.2[,4], null = "Trend")##reject the null that this is level stationary
+kpss.test(ts_midwest.2[,5], null = "Trend")##reject the null that this is level stationary
+kpss.test(ts_midwest.2[,6], null = "Trend")##reject the null that this is level/trend stationary
+
+kpss.test(ts_maritimes.2[,4], null = "Trend")##reject the null that this is level/trend stationary
+kpss.test(ts_maritimes.2[,5], null = "Trend")##reject the null that this is trend stationary
+kpss.test(ts_maritimes.2[,6], null = "Trend")##reject the null that this is level/trend stationary
+
+kpss.test(ts_territories.2[,4], null = "Trend")
+kpss.test(ts_territories.2[,5], null = "Trend")##reject the null that this is trend stationary
+kpss.test(ts_territories.2[,6], null = "Trend")
+##cannot reject the null of stationarity, p-value indicates they could be stationary 
+
 ```
 ```{r preliminary time series analysis-3}
 ##try ARIMA model
