@@ -24,6 +24,8 @@ Spread table so that these characteristics and their values belong in their own 
 For preliminary analysis only the age-standardized rate of incidence is used as this is to help adjust for locations that have older age groups. Although it is important to note that regions with older age groups would be expected to have a higher rate of incidence even with the age standardized rate.
 >cancer_w4
 
+[RMD file](https://github.com/OROY97/CIND820-OR/blob/R-code/PROJECT820.rmd)
+
 
 ##count number of region in occupation and cancer
 n_distinct(cancer_cl$GEO)
@@ -42,3 +44,18 @@ since we are looking at the relationship between cancer incidence and geographic
 
 EDA for each file:
 uses Python pandas_profiling 
+
+[EDA- Not Stratified](https://github.com/OROY97/CIND820-OR/blob/main/output_w4.html)
+
+[EDA-ON](https://github.com/OROY97/CIND820-OR/blob/main/output_ON%20(1).html)
+
+[EDA-QC](https://github.com/OROY97/CIND820-OR/blob/main/output_QC%20(1).html)
+
+[EDA-BC](https://github.com/OROY97/CIND820-OR/blob/main/output_BC%20(1).html)
+
+[EDA-midwest](https://github.com/OROY97/CIND820-OR/blob/main/output_midwest%20(1).html)
+
+[EDA-maritimes](https://github.com/OROY97/CIND820-OR/blob/main/output_maritimes%20(1).html)
+
+[EDA-territories](https://github.com/OROY97/CIND820-OR/blob/main/output_territories%20(1).html)
+
