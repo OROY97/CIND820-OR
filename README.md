@@ -6,7 +6,7 @@ classification and regression analysis & predictive analytics project
 DataSets
 
 #cancer incidence
-[13100109-eng.zip](https://github.com/OROY97/CIND820/files/7899775/13100109-eng.zip)
+[13100109.zip](https://github.com/OROY97/CIND820-OR/blob/DataSets/13100109.zip)
 
 #income tax
 [tbl5.csv](https://github.com/OROY97/CIND820/files/7899779/tbl5.csv)
