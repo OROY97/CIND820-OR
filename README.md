@@ -26,6 +26,8 @@ For preliminary analysis only the age-standardized rate of incidence is used as 
 
 [RMD file](https://github.com/OROY97/CIND820-OR/blob/R-code/PROJECT820.rmd)
 
+[knit HTML](https://github.com/OROY97/CIND820-OR/blob/R-code/PROJECT820.html)
+
 
 ##count number of region in occupation and cancer
 n_distinct(cancer_cl$GEO)
