@@ -17,13 +17,20 @@ knitr::opts_chunk$set(echo = TRUE)
 #install.packages("arules")
 #install.packages("Rtools")
 #install.packages("stats")
+#install.packages("forecast")
+#install.packages("TSstudio")
 library(arules)
 library(DescTools)
 library(dplyr)
 library(tidyr)
 library(car)
 library(stats)
-
+library(lubridate)
+library(ggplot2)
+library(forecast)
+library(tseries)
+library(caret)
+library(TSstudio)
 ```
 
 ```{r read}
@@ -164,6 +171,502 @@ cancer_territories.2<- rbind(cancer_NWT.2,cancer_YT.2,cancer_NVT.2)
 
 ```
 
+```{r preliminary time series analysis.1}
+##try time series analysis
+###Just a peek
+
+ts_ON.2<-ts(data = cancer_ON.2, frequency = n_distinct(cancer_ON.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_ON.2)
+
+ts_QC.2<-ts(data = cancer_QC.2, frequency = n_distinct(cancer_QC.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_QC.2)
+
+ts_BC.2<-ts(data = cancer_BC.2, frequency = n_distinct(cancer_BC.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_BC.2)
+
+ts_midwest.2<-ts(data = cancer_midwest.2, frequency = n_distinct(cancer_midwest.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_midwest.2)
+
+ts_maritimes.2<-ts(data = cancer_maritimes.2,frequency = n_distinct(cancer_maritimes.2$GEO) , start = 2001, end = 2015)
+ts.plot(ts_maritimes.2)
+
+ts_territories.2<-ts(data = cancer_territories.2, frequency = n_distinct(cancer_territories.2$GEO) ,start = 2001, end = 2015)
+ts.plot(ts_territories.2)
+
+class(ts_BC.2)
+####SO the frequency used is the number of distinct values in the GEO feature. 
+####This is because this is the "interval" that repeats over time.
+##"Argument frequency indicates the sampling frequency of the time series, with the default value 1 indicating one sample in each unit time interval."
+```
 ```{r}
+plot(decompose(ts_ON.2[,4]))
+plot(decompose(ts_ON.2[,5]))
+plot(decompose(ts_ON.2[,6]))
+#plot(decompose(ts_ON.2[,7], na.action(na.pass)))
+#plot(decompose(ts_ON.2[,8],na.action(na.pass)))
+
+plot(decompose(ts_QC.2[,4]))
+plot(decompose(ts_QC.2[,5]))
+plot(decompose(ts_QC.2[,6]))
+
+plot(decompose(ts_BC.2[,4]))
+plot(decompose(ts_BC.2[,5]))
+plot(decompose(ts_BC.2[,6]))
+
+plot(decompose(ts_midwest.2[,4]))##residuals are not white noise
+plot(decompose(ts_midwest.2[,5]))##residuals are not white noise
+plot(decompose(ts_midwest.2[,6]))##residuals are not white noise
+
+plot(decompose(ts_maritimes.2[,4]))
+plot(decompose(ts_maritimes.2[,5]))##residuals are not white noise
+plot(decompose(ts_maritimes.2[,6]))
+
+plot(decompose(ts_territories.2[,4]))
+plot(decompose(ts_territories.2[,5]))
+plot(decompose(ts_territories.2[,6]))
 
 
+```
+
+
+
+```{r preliminary time series analysis.2}
+##All cancer
+
+ts.plot(ts_ON.2[,4], main = "All sites of cancer")
+ts.plot(ts_QC.2[,4], main = "All sites of cancer")
+ts.plot(ts_BC.2[,4], main = "All sites of cancer")
+ts.plot(ts_midwest.2[,4], main = "All sites of cancer")
+ts.plot(ts_maritimes.2[,4], main = "All sites of cancer")
+ts.plot(ts_territories.2[,4], main = "All sites of cancer")
+
+#Lung
+
+ts.plot(ts_ON.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_QC.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_BC.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_midwest.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_maritimes.2[,5], main="Bronchus and lung cancer")
+ts.plot(ts_territories.2[,5], main="Bronchus and lung cancer")
+
+
+#Colon
+
+ts.plot(ts_ON.2[,6], main="Colon cancer")
+ts.plot(ts_QC.2[,6], main="Colon cancer")
+ts.plot(ts_BC.2[,6], main="Colon cancer")
+ts.plot(ts_midwest.2[,6], main="Colon cancer")
+ts.plot(ts_maritimes.2[,6], main="Colon cancer")
+ts.plot(ts_territories.2[,6], main="Colon cancer")
+
+
+```
+
+
+```{r preliminary time series analysis-2}
+###check ACF to determine what predictive model to use
+#Ontario
+acf(ts_ON.2[,4], type = "correlation")
+acf(ts_ON.2[,4], type= "partial")
+acf(ts_ON.2[,5], type = "correlation")
+acf(ts_ON.2[,5], type= "partial")
+acf(ts_ON.2[,6], type = "correlation")
+acf(ts_ON.2[,6], type= "partial")
+
+#Quebec
+acf(ts_QC.2[,4], type = "correlation")
+acf(ts_QC.2[,4], type= "partial")
+acf(ts_QC.2[,5], type = "correlation")
+acf(ts_QC.2[,5], type= "partial")
+acf(ts_QC.2[,6], type = "correlation")
+acf(ts_QC.2[,6], type= "partial")
+
+#BRITISH COLUMBIA
+acf(ts_BC.2[,4], type = "correlation")
+acf(ts_BC.2[,4], type= "partial")
+acf(ts_BC.2[,5], type = "correlation")
+acf(ts_BC.2[,5], type= "partial")
+acf(ts_BC.2[,6], type = "correlation")
+acf(ts_BC.2[,6], type= "partial")
+
+##MIDWEST
+acf(ts_midwest.2[,4], type = "correlation")
+acf(ts_midwest.2[,4], type= "partial")
+acf(ts_midwest.2[,5], type = "correlation")
+acf(ts_midwest.2[,5], type= "partial")
+acf(ts_midwest.2[,6], type = "correlation")
+acf(ts_midwest.2[,6], type= "partial")
+
+#Maritimes
+acf(ts_maritimes.2[,4], type = "correlation")
+acf(ts_maritimes.2[,4], type= "partial")
+acf(ts_maritimes.2[,5], type = "correlation")
+acf(ts_maritimes.2[,5], type= "partial")
+acf(ts_maritimes.2[,6], type = "correlation")
+acf(ts_maritimes.2[,6], type= "partial")
+
+#territories
+acf(ts_territories.2[,4], type = "correlation")
+acf(ts_territories.2[,4], type= "partial")
+acf(ts_territories.2[,5], type = "correlation")
+acf(ts_territories.2[,5], type= "partial")
+acf(ts_territories.2[,6], type = "correlation")
+acf(ts_territories.2[,6], type= "partial")
+
+#####
+###doesn't look like any of them are sufficiently stationary
+##makes me want to use ARIMA
+##time series regression
+###see decomposition
+```
+
+
+```{r preliminary time series analysis.stationarity}
+##tests for stationarity
+#ljung-box - non-stationary will have low p-value
+##other tests indicated a lag of 6 so we will see how this changes the ljung-box test
+Box.test(ts_ON.2[,4], type="Ljung-Box")
+Box.test(ts_ON.2[,5], type="Ljung-Box")
+Box.test(ts_ON.2[,6], type="Ljung-Box")
+
+Box.test(ts_QC.2[,4], type="Ljung-Box")##fail to reject null of stationarity
+Box.test(ts_QC.2[,5], type="Ljung-Box")
+Box.test(ts_QC.2[,6], type="Ljung-Box")
+
+Box.test(ts_BC.2[,4], type="Ljung-Box")
+Box.test(ts_BC.2[,5], type="Ljung-Box")
+Box.test(ts_BC.2[,6], type="Ljung-Box")
+
+Box.test(ts_midwest.2[,4], type="Ljung-Box")
+Box.test(ts_midwest.2[,5], type="Ljung-Box")
+Box.test(ts_midwest.2[,6], type="Ljung-Box")##fail to reject null of stationarity
+
+Box.test(ts_maritimes.2[,4], type="Ljung-Box")
+Box.test(ts_maritimes.2[,5], type="Ljung-Box")
+Box.test(ts_maritimes.2[,6], type="Ljung-Box")
+
+Box.test(ts_territories.2[,4], type="Ljung-Box")##fail to reject null of stationarity
+Box.test(ts_territories.2[,5], type="Ljung-Box")##fail to reject null of stationarity
+Box.test(ts_territories.2[,6], type="Ljung-Box")##fail to reject null of stationarity
+#generally reject the null that these are stationary time series
+
+#stationary might indicate that there is an equally likely 
+#chance of cancer diagnosis regardless of location
+```
+
+
+```{r preliminary time series analysis.stationarity.2}
+#Augmented dickey-fuller t-stat test for unit root
+options(warn = -1)
+#non-stationary has a large p-value
+adf.test(ts_ON.2[,4])
+adf.test(ts_ON.2[,5])
+adf.test(ts_ON.2[,6])
+
+adf.test(ts_QC.2[,4])
+adf.test(ts_QC.2[,5])
+adf.test(ts_QC.2[,6])
+
+adf.test(ts_BC.2[,4])
+adf.test(ts_BC.2[,5])
+adf.test(ts_BC.2[,6])
+
+adf.test(ts_midwest.2[,4])
+adf.test(ts_midwest.2[,5])
+adf.test(ts_midwest.2[,6])
+
+adf.test(ts_maritimes.2[,4])
+adf.test(ts_maritimes.2[,5])
+adf.test(ts_maritimes.2[,6])
+
+adf.test(ts_territories.2[,4])##fail to reject null of non-stationarity
+adf.test(ts_territories.2[,5])##fail to reject null of non-stationarity
+adf.test(ts_territories.2[,6])##fail to reject null of non-stationarity
+##reject the null of non-stationarity for all except ^^
+```
+
+
+```{r preliminary time series analysis.stationarity.3}
+##KPSS for level or trend stationarity
+options(warn = -1)
+## lower p-value indicates non stationarity
+kpss.test(ts_ON.2[,4], null = "Trend")
+kpss.test(ts_ON.2[,5], null = "Trend")
+kpss.test(ts_ON.2[,6], null = "Trend")
+
+kpss.test(ts_QC.2[,4], null = "Trend")
+kpss.test(ts_QC.2[,5], null = "Trend")
+kpss.test(ts_QC.2[,6], null = "Trend")
+
+kpss.test(ts_BC.2[,4], null = "Trend")
+kpss.test(ts_BC.2[,5], null = "Trend")
+kpss.test(ts_BC.2[,6], null = "Trend")
+
+kpss.test(ts_midwest.2[,4], null = "Trend")##reject the null that this is level stationary
+kpss.test(ts_midwest.2[,5], null = "Trend")##reject the null that this is level stationary
+kpss.test(ts_midwest.2[,6], null = "Trend")##reject the null that this is level/trend stationary
+
+kpss.test(ts_maritimes.2[,4], null = "Trend")##reject the null that this is level/trend stationary
+kpss.test(ts_maritimes.2[,5], null = "Trend")##reject the null that this is trend stationary
+kpss.test(ts_maritimes.2[,6], null = "Trend")##reject the null that this is level/trend stationary
+
+kpss.test(ts_territories.2[,4], null = "Trend")
+kpss.test(ts_territories.2[,5], null = "Trend")
+kpss.test(ts_territories.2[,6], null = "Trend")
+
+##cannot reject the null of stationarity, p-value indicates they could be stationary 
+
+```
+```{r train/test split for time series}
+split.ON<-ts_split(ts.obj=ts_ON.2, sample.out =104)
+train.ON<- split.ON$train
+test.ON<- split.ON$test
+
+split.QC<- ts_split(ts_QC.2, sample.out = 38)
+train.QC<- split.QC$train
+test.QC<- split.QC$test
+
+split.BC<- ts_split(ts_BC.2, sample.out = 34)
+train.BC<- split.BC$train
+test.BC<- split.BC$test
+
+split.mid<- ts_split(ts_midwest.2, sample.out =48)
+train.mid<- split.mid$train
+test.mid<- split.mid$test
+
+split.mar<- ts_split(ts_maritimes.2, sample.out = 38)
+train.mar<- split.mar$train
+test.mar<- split.mar$test
+
+split.terr<- ts_split(ts_territories.2, sample.out = 6)
+train.terr<-split.terr$train
+test.terr<-split.terr$test
+
+```
+
+
+```{r train/test split}
+##divide data into training and test sets
+smp_size.ON<- floor(0.70* nrow(cancer_ON.2))
+smp_size.QC<- floor(0.70* nrow(cancer_QC.2))
+smp_size.BC<- floor(0.70* nrow(cancer_BC.2))
+smp_size.midwest<- floor(0.70* nrow(cancer_midwest.2))
+smp_size.maritimes<- floor(0.70* nrow(cancer_maritimes.2))
+smp_size.territories<- floor(0.70* nrow(cancer_territories.2))
+
+#set seed to make partition reproducible
+set.seed(1)
+train_ind.ON<- sample(seq_len(nrow(cancer_ON.2)), size = smp_size.ON)
+train_ind.QC<- sample(seq_len(nrow(cancer_QC.2)), size = smp_size.QC)
+train_ind.BC<- sample(seq_len(nrow(cancer_BC.2)), size = smp_size.BC)
+train_ind.mid<- sample(seq_len(nrow(cancer_midwest.2)), size = smp_size.midwest)
+train_ind.mar<- sample(seq_len(nrow(cancer_maritimes.2)), size = smp_size.maritimes)
+train_ind.ter<- sample(seq_len(nrow(cancer_territories.2)), size = smp_size.territories)
+
+train.ON<- ts(cancer_ON.2[train_ind.ON,], frequency = n_distinct(cancer_ON.2$GEO),start = 2000, end = 2015)
+test.ON<- ts(cancer_ON.2[-train_ind.ON,],frequency = n_distinct(cancer_ON.2$GEO),start = 2000, end = 2015)
+
+train.QC<- ts(cancer_QC.2[train_ind.QC,],frequency = n_distinct(cancer_QC.2$GEO),start = 2000, end = 2015)
+test.QC<- ts(cancer_QC.2[-train_ind.QC,],frequency = n_distinct(cancer_QC.2$GEO),start = 2000, end = 2015)
+
+train.BC<- ts(cancer_BC.2[train_ind.BC,],frequency = n_distinct(cancer_BC.2$GEO),start = 2000, end = 2015)
+test.BC<- ts(cancer_BC.2[-train_ind.BC,],frequency = n_distinct(cancer_BC.2$GEO),start = 2000, end = 2015)
+
+train.midwest<- ts(cancer_midwest.2[train_ind.mid,],frequency = n_distinct(cancer_midwest.2$GEO),start = 2000, end = 2015)
+test.midwest<- ts(cancer_midwest.2[-train_ind.mid,],frequency = n_distinct(cancer_midwest.2$GEO),start = 2000, end = 2015)
+
+train.maritimes<- ts(cancer_maritimes.2[train_ind.mar,],frequency = n_distinct(cancer_maritimes.2$GEO),start = 2000, end = 2015)
+test.maritimes<- ts(cancer_maritimes.2[-train_ind.mar,],frequency = n_distinct(cancer_maritimes.2$GEO),start = 2000, end = 2015)
+
+train.territories<- ts(cancer_territories.2[train_ind.ter,],frequency = n_distinct(cancer_territories.2$GEO),start = 2000, end = 2015)
+test.territories<- ts(cancer_territories.2[-train_ind.ter,],frequency = n_distinct(cancer_territories.2$GEO),start = 2000, end = 2015)
+```
+
+
+```{r time series model}
+#TSLM
+#need to train models
+##time series regression [tsr]-> tslm
+
+tsr_ON<- tslm(formula= train.ON[,4]~GEO+Sex,data=train.ON)
+summary(tsr_ON)
+tsr_ON.5<- tslm(formula= train.ON[,5]~GEO+Sex,data=train.ON)
+summary(tsr_ON.5)
+tsr_ON.6<- tslm(formula= train.ON[,6]~GEO+Sex,data=train.ON)
+summary(tsr_ON.6)
+##tsr_ON.7 <- tslm(formula= train.ON[,7]~GEO, data=train.ON)
+##summary(tsr_ON.7)
+##tsr_ON.8<- tslm(formula= train.ON[,8]~GEO, data=train.ON)
+##summary(tsr_ON.8)
+
+tsr_QC<- tslm(formula = train.QC[,4]~GEO+Sex, data = train.QC)
+summary(tsr_QC)
+tsr_QC.5<- tslm(formula= train.QC[,5]~GEO+Sex, data=train.QC)
+summary(tsr_QC.5)
+tsr_QC.6<- tslm(formula= train.QC[,6]~GEO+Sex, data=train.QC)
+summary(tsr_QC.6)
+##tsr_QC.7<- tslm(formula= train.QC[,7]~GEO, data=train.QC)
+##summary(tsr_QC.7)
+#tsr_QC.8<- tslm(formula= train.QC[,8]~GEO, data=train.QC)
+#summary(tsr_QC.8)
+
+tsr_BC<- tslm(formula = train.BC[,4]~GEO+Sex, data = train.BC)
+summary(tsr_BC)
+tsr_BC.5<- tslm(formula = train.BC[,5]~GEO+Sex, data = train.BC)
+summary(tsr_BC.5)
+tsr_BC.6<-tslm(formula = train.BC[,6]~GEO+Sex, data=train.BC)
+summary(tsr_BC.6)
+
+tsr_mid<-tslm(formula = train.mid[,4]~GEO+Sex, data=train.mid)
+summary(tsr_mid)
+tsr_mid.5<-tslm(formula = train.mid[,5]~GEO+Sex, data=train.mid)
+summary(tsr_mid.5)
+tsr_mid.6<- tslm(formula = train.mid[,6]~GEO+Sex, data=train.mid)
+summary(tsr_mid.6)
+
+tsr_mar<-tslm(formula = train.mar[,4]~GEO+Sex, data= train.mar)
+summary(tsr_mar)
+tsr_mar.5<- tslm(formula = train.mar[,5]~GEO+Sex, data = train.mar)
+summary(tsr_mar.5)
+tsr_mar.6<- tslm(formula = train.mar[,6]~GEO+Sex, data = train.mar)
+summary(tsr_mar.6)
+
+tsr_terr<- tslm(formula = train.terr[,4]~GEO+Sex, data = train.terr)
+summary(tsr_terr)
+tsr_terr.5<- tslm(formula = train.terr[,5]~GEO+Sex, data = train.terr)
+summary(tsr_terr.5)
+tsr_terr.6<-tslm(formula = train.terr[,6]~GEO+Sex, data = train.terr)
+
+
+
+
+```
+
+
+```{r predictions ONTARIO}
+##test predictions
+
+newdata.1<- data.frame(
+  ï..REF_DATE = test.ON[,1],
+  GEO = test.ON[,2],
+  Sex = test.ON[,3]
+)
+fcast.ON.4<-forecast(tsr_ON, newdata = newdata.1,h=2)
+autoplot(fcast.ON.4)
+
+newdata.2<- data.frame(
+  GEO = test.ON[,2],
+  Sex = test.ON[,3]
+)
+fcast.ON.5<-forecast(tsr_ON.5, newdata = newdata.2,h=2)
+autoplot(fcast.ON.5)
+
+newdata.3<- data.frame(
+  GEO = test.ON[,2],
+  Sex = test.ON[,3]
+)
+fcast.ON.6<-forecast(tsr_ON.6, newdata = newdata.3,h=2)
+autoplot(fcast.ON.6, h=2)
+
+```
+```{r predictions QUEBEC}
+
+newdata.1.1<- data.frame(
+  GEO = test.QC[,2],
+  Sex = test.QC[,3]
+)
+fcast.QC.4<-forecast(tsr_QC, newdata = newdata.1.1,h=2)
+#autoplot(fcast.QC.4)
+
+newdata.2.1<- data.frame(
+  GEO = test.QC[,2],
+  Sex = test.QC[,3]
+)
+fcast.QC.5<-forecast(tsr_QC.5, newdata = newdata.2.1,h=2)
+#autoplot(fcast.QC.5)
+
+newdata.3.1<- data.frame(
+  GEO = test.QC[,2],
+  Sex = test.QC[,3]
+)
+fcast.QC.6<-forecast(tsr_QC.6, newdata = newdata.3.1,h=2)
+#autoplot(fcast.QC.6)
+
+
+```
+```{r predictions BC}
+newdata.1.2<- data.frame(
+  GEO = test.BC[,2],
+  Sex = test.BC[,3]
+)
+fcast.BC.4<-forecast(tsr_BC, newdata = newdata.1.2,h=2)
+#autoplot(fcast.QC.4)
+
+newdata.2.2<- data.frame(
+  GEO = test.BC[,2],
+  Sex = test.BC[,3]
+)
+fcast.BC.5<-forecast(tsr_BC.5, newdata = newdata.2.2,h=2)
+#autoplot(fcast.BC.5)
+
+newdata.3.2<- data.frame(
+  GEO = test.BC[,2],
+  Sex = test.BC[,3]
+)
+fcast.BC.6<-forecast(tsr_BC.6, newdata = newdata.3.2,h=2)
+#autoplot(fcast.BC.6)
+
+```
+```{r PREDICTIONS MIDWEST}
+
+newdata.1.3<- data.frame(
+  GEO = test.mid[,2],
+  Sex = test.mid[,3]
+)
+fcast.mid.4<-forecast(tsr_mid, newdata = newdata.1.3,h=2)
+#autoplot(fcast.mid.4)
+
+newdata.2.3<- data.frame(
+  GEO = test.mid[,2],
+  Sex = test.mid[,3]
+)
+fcast.mid.5<-forecast(tsr_mid.5, newdata = newdata.2.3,h=2)
+#autoplot(fcast.mid.5)
+
+newdata.3.3<- data.frame(
+  GEO = test.mid[,2],
+  Sex = test.mid[,3]
+)
+fcast.mid.6<-forecast(tsr_mid.6, newdata = newdata.3.3,h=2)
+#autoplot(fcast.mid.6)
+
+```
+```{r predictions maritimes}
+newdata.1.4<- data.frame(
+  GEO = test.mar[,2],
+  Sex = test.mar[,3]
+)
+fcast.mar.4<-forecast(tsr_mar, newdata = newdata.1.4,h=2)
+#autoplot(fcast.mar.4)
+
+newdata.2.4<- data.frame(
+  GEO = test.mar[,2],
+  Sex = test.mar[,3]
+)
+fcast.mar.5<-forecast(tsr_mar.5, newdata = newdata.2.4,h=2)
+#autoplot(fcast.mar.5)
+
+newdata.3.4<- data.frame(
+  GEO = test.mar[,2],
+  Sex = test.mar[,3]
+)
+fcast.mar.6<-forecast(tsr_mar.6, newdata = newdata.3.4,h=2)
+#autoplot(fcast.mar.6)
+
+```
+
+
+```{r preliminary time series analysis-ARIMA}
+##ARIMA model or SARIMA
+
+```
