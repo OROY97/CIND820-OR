@@ -445,43 +445,6 @@ test.terr<-split.terr$test
 ```
 
 
-```{r train/test split}
-##divide data into training and test sets
-smp_size.ON<- floor(0.70* nrow(cancer_ON.2))
-smp_size.QC<- floor(0.70* nrow(cancer_QC.2))
-smp_size.BC<- floor(0.70* nrow(cancer_BC.2))
-smp_size.midwest<- floor(0.70* nrow(cancer_midwest.2))
-smp_size.maritimes<- floor(0.70* nrow(cancer_maritimes.2))
-smp_size.territories<- floor(0.70* nrow(cancer_territories.2))
-
-#set seed to make partition reproducible
-set.seed(1)
-train_ind.ON<- sample(seq_len(nrow(cancer_ON.2)), size = smp_size.ON)
-train_ind.QC<- sample(seq_len(nrow(cancer_QC.2)), size = smp_size.QC)
-train_ind.BC<- sample(seq_len(nrow(cancer_BC.2)), size = smp_size.BC)
-train_ind.mid<- sample(seq_len(nrow(cancer_midwest.2)), size = smp_size.midwest)
-train_ind.mar<- sample(seq_len(nrow(cancer_maritimes.2)), size = smp_size.maritimes)
-train_ind.ter<- sample(seq_len(nrow(cancer_territories.2)), size = smp_size.territories)
-
-train.ON<- ts(cancer_ON.2[train_ind.ON,], frequency = n_distinct(cancer_ON.2$GEO),start = 2000, end = 2015)
-test.ON<- ts(cancer_ON.2[-train_ind.ON,],frequency = n_distinct(cancer_ON.2$GEO),start = 2000, end = 2015)
-
-train.QC<- ts(cancer_QC.2[train_ind.QC,],frequency = n_distinct(cancer_QC.2$GEO),start = 2000, end = 2015)
-test.QC<- ts(cancer_QC.2[-train_ind.QC,],frequency = n_distinct(cancer_QC.2$GEO),start = 2000, end = 2015)
-
-train.BC<- ts(cancer_BC.2[train_ind.BC,],frequency = n_distinct(cancer_BC.2$GEO),start = 2000, end = 2015)
-test.BC<- ts(cancer_BC.2[-train_ind.BC,],frequency = n_distinct(cancer_BC.2$GEO),start = 2000, end = 2015)
-
-train.midwest<- ts(cancer_midwest.2[train_ind.mid,],frequency = n_distinct(cancer_midwest.2$GEO),start = 2000, end = 2015)
-test.midwest<- ts(cancer_midwest.2[-train_ind.mid,],frequency = n_distinct(cancer_midwest.2$GEO),start = 2000, end = 2015)
-
-train.maritimes<- ts(cancer_maritimes.2[train_ind.mar,],frequency = n_distinct(cancer_maritimes.2$GEO),start = 2000, end = 2015)
-test.maritimes<- ts(cancer_maritimes.2[-train_ind.mar,],frequency = n_distinct(cancer_maritimes.2$GEO),start = 2000, end = 2015)
-
-train.territories<- ts(cancer_territories.2[train_ind.ter,],frequency = n_distinct(cancer_territories.2$GEO),start = 2000, end = 2015)
-test.territories<- ts(cancer_territories.2[-train_ind.ter,],frequency = n_distinct(cancer_territories.2$GEO),start = 2000, end = 2015)
-```
-
 
 ```{r time series model}
 #TSLM
@@ -569,6 +532,7 @@ fcast.ON.6<-forecast(tsr_ON.6, newdata = newdata.3,h=2)
 autoplot(fcast.ON.6, h=2)
 
 ```
+
 ```{r predictions QUEBEC}
 
 newdata.1.1<- data.frame(
@@ -576,47 +540,49 @@ newdata.1.1<- data.frame(
   Sex = test.QC[,3]
 )
 fcast.QC.4<-forecast(tsr_QC, newdata = newdata.1.1,h=2)
-#autoplot(fcast.QC.4)
+autoplot(fcast.QC.4)
 
 newdata.2.1<- data.frame(
   GEO = test.QC[,2],
   Sex = test.QC[,3]
 )
 fcast.QC.5<-forecast(tsr_QC.5, newdata = newdata.2.1,h=2)
-#autoplot(fcast.QC.5)
+autoplot(fcast.QC.5)
 
 newdata.3.1<- data.frame(
   GEO = test.QC[,2],
   Sex = test.QC[,3]
 )
 fcast.QC.6<-forecast(tsr_QC.6, newdata = newdata.3.1,h=2)
-#autoplot(fcast.QC.6)
+autoplot(fcast.QC.6)
 
 
 ```
+
 ```{r predictions BC}
 newdata.1.2<- data.frame(
   GEO = test.BC[,2],
   Sex = test.BC[,3]
 )
 fcast.BC.4<-forecast(tsr_BC, newdata = newdata.1.2,h=2)
-#autoplot(fcast.QC.4)
+autoplot(fcast.QC.4)
 
 newdata.2.2<- data.frame(
   GEO = test.BC[,2],
   Sex = test.BC[,3]
 )
 fcast.BC.5<-forecast(tsr_BC.5, newdata = newdata.2.2,h=2)
-#autoplot(fcast.BC.5)
+autoplot(fcast.BC.5)
 
 newdata.3.2<- data.frame(
   GEO = test.BC[,2],
   Sex = test.BC[,3]
 )
 fcast.BC.6<-forecast(tsr_BC.6, newdata = newdata.3.2,h=2)
-#autoplot(fcast.BC.6)
+autoplot(fcast.BC.6)
 
 ```
+
 ```{r PREDICTIONS MIDWEST}
 
 newdata.1.3<- data.frame(
@@ -624,44 +590,45 @@ newdata.1.3<- data.frame(
   Sex = test.mid[,3]
 )
 fcast.mid.4<-forecast(tsr_mid, newdata = newdata.1.3,h=2)
-#autoplot(fcast.mid.4)
+autoplot(fcast.mid.4)
 
 newdata.2.3<- data.frame(
   GEO = test.mid[,2],
   Sex = test.mid[,3]
 )
 fcast.mid.5<-forecast(tsr_mid.5, newdata = newdata.2.3,h=2)
-#autoplot(fcast.mid.5)
+autoplot(fcast.mid.5)
 
 newdata.3.3<- data.frame(
   GEO = test.mid[,2],
   Sex = test.mid[,3]
 )
 fcast.mid.6<-forecast(tsr_mid.6, newdata = newdata.3.3,h=2)
-#autoplot(fcast.mid.6)
+autoplot(fcast.mid.6)
 
 ```
+
 ```{r predictions maritimes}
 newdata.1.4<- data.frame(
   GEO = test.mar[,2],
   Sex = test.mar[,3]
 )
 fcast.mar.4<-forecast(tsr_mar, newdata = newdata.1.4,h=2)
-#autoplot(fcast.mar.4)
+autoplot(fcast.mar.4)
 
 newdata.2.4<- data.frame(
   GEO = test.mar[,2],
   Sex = test.mar[,3]
 )
 fcast.mar.5<-forecast(tsr_mar.5, newdata = newdata.2.4,h=2)
-#autoplot(fcast.mar.5)
+autoplot(fcast.mar.5)
 
 newdata.3.4<- data.frame(
   GEO = test.mar[,2],
   Sex = test.mar[,3]
 )
 fcast.mar.6<-forecast(tsr_mar.6, newdata = newdata.3.4,h=2)
-#autoplot(fcast.mar.6)
+autoplot(fcast.mar.6)
 
 ```
 
