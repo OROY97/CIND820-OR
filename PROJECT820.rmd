@@ -198,7 +198,7 @@ class(ts_BC.2)
 ####This is because this is the "interval" that repeats over time.
 ##"Argument frequency indicates the sampling frequency of the time series, with the default value 1 indicating one sample in each unit time interval."
 ```
-```{r}
+```{r decomposition plots}
 plot(decompose(ts_ON.2[,4]))
 plot(decompose(ts_ON.2[,5]))
 plot(decompose(ts_ON.2[,6]))
@@ -417,6 +417,7 @@ kpss.test(ts_territories.2[,6], null = "Trend")
 ##cannot reject the null of stationarity, p-value indicates they could be stationary 
 
 ```
+
 ```{r train/test split for time series}
 split.ON<-ts_split(ts.obj=ts_ON.2, sample.out =104)
 train.ON<- split.ON$train
@@ -501,8 +502,6 @@ summary(tsr_terr.5)
 tsr_terr.6<-tslm(formula = train.terr[,6]~GEO+Sex, data = train.terr)
 
 
-
-
 ```
 
 
@@ -515,21 +514,24 @@ newdata.1<- data.frame(
   Sex = test.ON[,3]
 )
 fcast.ON.4<-forecast(tsr_ON, newdata = newdata.1,h=2)
-autoplot(fcast.ON.4)
+autoplot(fcast.ON.4)+
+  autolayer(test.ON[,4])
 
 newdata.2<- data.frame(
   GEO = test.ON[,2],
   Sex = test.ON[,3]
 )
 fcast.ON.5<-forecast(tsr_ON.5, newdata = newdata.2,h=2)
-autoplot(fcast.ON.5)
+autoplot(fcast.ON.5)+
+  autolayer(test.ON[,5])
 
 newdata.3<- data.frame(
   GEO = test.ON[,2],
   Sex = test.ON[,3]
 )
 fcast.ON.6<-forecast(tsr_ON.6, newdata = newdata.3,h=2)
-autoplot(fcast.ON.6, h=2)
+autoplot(fcast.ON.6, h=2)+
+  autolayer(test.ON[,6])
 
 ```
 
@@ -540,21 +542,24 @@ newdata.1.1<- data.frame(
   Sex = test.QC[,3]
 )
 fcast.QC.4<-forecast(tsr_QC, newdata = newdata.1.1,h=2)
-autoplot(fcast.QC.4)
+autoplot(fcast.QC.4)+
+  autolayer(test.QC[,4])
 
 newdata.2.1<- data.frame(
   GEO = test.QC[,2],
   Sex = test.QC[,3]
 )
 fcast.QC.5<-forecast(tsr_QC.5, newdata = newdata.2.1,h=2)
-autoplot(fcast.QC.5)
+autoplot(fcast.QC.5)+
+  autolayer(test.QC[,5])
 
 newdata.3.1<- data.frame(
   GEO = test.QC[,2],
   Sex = test.QC[,3]
 )
 fcast.QC.6<-forecast(tsr_QC.6, newdata = newdata.3.1,h=2)
-autoplot(fcast.QC.6)
+autoplot(fcast.QC.6)+
+  autolayer(test.QC[,6])
 
 
 ```
@@ -565,21 +570,24 @@ newdata.1.2<- data.frame(
   Sex = test.BC[,3]
 )
 fcast.BC.4<-forecast(tsr_BC, newdata = newdata.1.2,h=2)
-autoplot(fcast.QC.4)
+autoplot(fcast.BC.4)+
+  autolayer(test.BC[,4])
 
 newdata.2.2<- data.frame(
   GEO = test.BC[,2],
   Sex = test.BC[,3]
 )
 fcast.BC.5<-forecast(tsr_BC.5, newdata = newdata.2.2,h=2)
-autoplot(fcast.BC.5)
+autoplot(fcast.BC.5)+
+  autolayer(test.BC[,5])
 
 newdata.3.2<- data.frame(
   GEO = test.BC[,2],
   Sex = test.BC[,3]
 )
 fcast.BC.6<-forecast(tsr_BC.6, newdata = newdata.3.2,h=2)
-autoplot(fcast.BC.6)
+autoplot(fcast.BC.6)+
+  autolayer(test.BC[,6])
 
 ```
 
@@ -590,21 +598,24 @@ newdata.1.3<- data.frame(
   Sex = test.mid[,3]
 )
 fcast.mid.4<-forecast(tsr_mid, newdata = newdata.1.3,h=2)
-autoplot(fcast.mid.4)
+autoplot(fcast.mid.4)+
+  autolayer(test.mid[,4])
 
 newdata.2.3<- data.frame(
   GEO = test.mid[,2],
   Sex = test.mid[,3]
 )
 fcast.mid.5<-forecast(tsr_mid.5, newdata = newdata.2.3,h=2)
-autoplot(fcast.mid.5)
+autoplot(fcast.mid.5)+
+  autolayer(test.mid[,5])
 
 newdata.3.3<- data.frame(
   GEO = test.mid[,2],
   Sex = test.mid[,3]
 )
 fcast.mid.6<-forecast(tsr_mid.6, newdata = newdata.3.3,h=2)
-autoplot(fcast.mid.6)
+autoplot(fcast.mid.6)+
+  autolayer(test.mid[,6])
 
 ```
 
@@ -614,26 +625,630 @@ newdata.1.4<- data.frame(
   Sex = test.mar[,3]
 )
 fcast.mar.4<-forecast(tsr_mar, newdata = newdata.1.4,h=2)
-autoplot(fcast.mar.4)
+autoplot(fcast.mar.4)+
+  autolayer(test.mar[,4])
 
 newdata.2.4<- data.frame(
   GEO = test.mar[,2],
   Sex = test.mar[,3]
 )
 fcast.mar.5<-forecast(tsr_mar.5, newdata = newdata.2.4,h=2)
-autoplot(fcast.mar.5)
+autoplot(fcast.mar.5)+
+  autolayer(test.mar[,5])
 
 newdata.3.4<- data.frame(
   GEO = test.mar[,2],
   Sex = test.mar[,3]
 )
 fcast.mar.6<-forecast(tsr_mar.6, newdata = newdata.3.4,h=2)
-autoplot(fcast.mar.6)
+autoplot(fcast.mar.6)+
+  autolayer(test.mar[,6])
+
+```
+
+```{r predictions Territories}
+newdata.1.5<- data.frame(
+  GEO = test.terr[,2],
+  Sex = test.terr[,3]
+)
+fcast.terr.4<-forecast(tsr_terr, newdata = newdata.1.5,h=2)
+autoplot(fcast.terr.4)+
+  autolayer(test.terr[,4])
+
+newdata.2.5<- data.frame(
+  GEO = test.terr[,2],
+  Sex = test.terr[,3]
+)
+fcast.terr.5<-forecast(tsr_terr.5, newdata = newdata.2.5,h=2)
+autoplot(fcast.terr.5)+
+  autolayer(test.terr[,5])
+
+newdata.3.5<- data.frame(
+  GEO = test.terr[,2],
+  Sex = test.terr[,3]
+)
+fcast.terr.6<-forecast(tsr_terr.6, newdata = newdata.3.5,h=2)
+autoplot(fcast.terr.6)+
+  autolayer(test.terr[,6])
 
 ```
 
 
-```{r preliminary time series analysis-ARIMA}
+```{r ARIMA Ontario}
 ##ARIMA model or SARIMA
+##trying non seasonal ARIMA models
+##with the currently non differenced data
 
+##staring with auto.arima
+####################All cancer sites
+#(auto.arima(train.ON[,4], seasonal = TRUE))
+#(Arima(train.ON[,4], order = c(1,0,5), seasonal = c(1,0,1)))#model from auto.arima
+#AIC=6659.09   AICc=6659.45   BIC=6703.47
+
+#(Arima(train.ON[,4], order = c(1,1,6), seasonal = c(0,1,1)))
+#(arima_ON.m<- Arima(train.ON[,4], order = c(1,1,6), seasonal = c(1,1,1)))
+#AIC=6127.88   AICc=6128.27   BIC=6171.37
+
+#(arima_ON.m<- Arima(train.ON[,4], order = c(1,1,8), seasonal = c(0,1,1)))
+#AIC=6089.67   AICc=6090.14   BIC=6137.51
+
+arima_ON.m<- Arima(train.ON[,4], order = c(1,1,8), seasonal = c(0,1,2))####BEST AIC
+#AIC=5865.88   AICc=5866.44   BIC=5918.07
+
+#################Lungs
+#(arima_ON.5<- auto.arima(train.ON[,5], seasonal = TRUE))
+#(arima_ON.5<- Arima(train.ON[,5], order = c(1,0,5), seasonal = c(0,0,1)))#model from auto.arima
+#AIC=5183.45   AICc=5183.75   BIC=5223.39
+
+#(arima_ON.5.m<- Arima(train.ON[,5], order = c(1,0,5), seasonal = c(0,1,1)))
+# AIC=4791.34   AICc=4791.6   BIC=4826.15
+
+#(arima_ON.5.m<- Arima(train.ON[,5], order = c(1,0,7), seasonal = c(0,1,1))) 
+#AIC=4742.87   AICc=4743.26   BIC=4786.38
+
+#(arima_ON.5.m<- Arima(train.ON[,5], order = c(1,0,8), seasonal = c(0,1,2)))
+#AIC=4506.99   AICc=4507.55   BIC=4559.2
+
+arima_ON.5.m<- Arima(train.ON[,5], order = c(1,0,9), seasonal = c(0,1,2))##BEST AIC
+#AIC=4497.12   AICc=4497.77   BIC=4553.68
+
+#############################COLON
+#(arima_ON.6<- auto.arima(train.ON[,6], seasonal = FALSE)) #False higher AIC than True
+#(arima_ON.6.m<- Arima(train.ON[,6], order = c(1,0,5), seasonal = c(0,0,0)))#model from auto.arima
+#AIC=4753.36   AICc=4753.59   BIC=4788.86
+
+#(arima_ON.6.m<- Arima(train.ON[,6], order = c(1,0,6), seasonal = c(0,0,0)))
+#AIC=4689.1   AICc=4689.39   BIC=4729.04
+
+#(arima_ON.6.m<- Arima(train.ON[,6], order = c(1,0,5), seasonal = c(0,1,1)))
+#AIC=4437.09   AICc=4437.35   BIC=4471.9
+
+#(arima_ON.6.m<- Arima(train.ON[,6], order = c(1,0,6), seasonal = c(0,1,1)))
+#AIC=4352.96   AICc=4353.28   BIC=4392.12
+
+#(arima_ON.6.m<- Arima(train.ON[,6], order = c(1,0,7), seasonal = c(0,1,1)))
+#AIC=4335.71   AICc=4336.1   BIC=4379.22
+
+arima_ON.6.m<- Arima(train.ON[,6], order = c(1,0,8), seasonal = c(0,1,2))##BEST AIC
+#AIC=4117.67   AICc=4118.23   BIC=4169.88
+```
+
+```{r ARIMA predict/forecast ONTARIO}
+
+fcast_ON.4<-forecast(arima_ON.m)
+autoplot(fcast_ON.4)+
+  autolayer(test.ON[,4])
+
+fcast_ON.5<-forecast(arima_ON.5.m)
+autoplot(fcast_ON.5)+
+  autolayer(test.ON[,5])
+
+fcast_ON.6<-forecast(arima_ON.6.m)
+autoplot(fcast_ON.6)+
+  autolayer(test.ON[,6])
+
+```
+
+```{r ARIMA QC}
+#######################All cancer sites
+#(arima_QC<- auto.arima(train.QC[,4], seasonal = TRUE))
+#(arima_QC<- Arima(train.QC[,4], order = c(1,0,1), seasonal = c(0,0,1)))##auto.arima model
+#AIC=2813.12   AICc=2813.38   BIC=2830.28
+
+#(arima_QC.m<- Arima(train.QC[,4], order = c(1,0,3), seasonal = c(0,0,1)))
+#AIC=2799.16   AICc=2799.66   BIC=2823.19
+
+#(arima_QC.m<- Arima(train.QC[,4], order = c(1,0,3), seasonal = c(0,1,1)))
+#AIC=2570.48   AICc=2570.89   BIC=2590.56
+
+#(arima_QC.m<- Arima(train.QC[,4], order = c(1,1,4), seasonal = c(0,1,1)))
+#AIC=2568.64   AICc=2569.2   BIC=2592.04
+
+arima_QC.m<- Arima(train.QC[,4], order = c(1,1,4), seasonal = c(0,1,2))##BEST AIC
+#AIC=2526.05   AICc=2526.77   BIC=2552.79
+
+##########################LUNGS
+#(arima_QC.5<- auto.arima(train.QC[,5], seasonal = TRUE))
+#(arima_QC.5<-Arima(train.QC[,5], order = c(0,0,1), seasonal = c(0,0,2)))##auto.arima model
+#AIC=2407.76   AICc=2408.02   BIC=2424.92
+
+#(arima_QC.5.m<-Arima(train.QC[,5], order = c(1,0,4), seasonal = c(0,1,2)))
+#AIC=2190.36   AICc=2191.08   BIC=2217.14
+
+#(arima_QC.5.m<-Arima(train.QC[,5], order = c(1,1,4), seasonal = c(0,1,2)))
+#AIC=2188.35   AICc=2189.07   BIC=2215.09
+
+#(arima_QC.5.m<-Arima(train.QC[,5], order = c(1,1,4), seasonal = c(0,1,3)))
+#AIC=2178.95   AICc=2179.85   BIC=2209.03
+
+#(arima_QC.5.m<-Arima(train.QC[,5], order = c(1,1,4), seasonal = c(0,1,4)))
+#AIC=2125.93   AICc=2127.04   BIC=2159.36
+arima_QC.5.m<-Arima(train.QC[,5], order = c(1,1,4), seasonal = c(0,1,5))
+#AIC=2104.38   AICc=2105.72   BIC=2141.14
+
+############################# Colon
+#(arima_QC.6<- auto.arima(train.QC[,6], seasonal = TRUE))
+#(arima_QC.6.m<-Arima(train.QC[,6], order = c(0,0,3), seasonal = c(0,0,1)))##auto.arima model
+#AIC=2258.1   AICc=2258.48   BIC=2278.7
+
+#(arima_QC.6.m<-Arima(train.QC[,6], order = c(4,0,3), seasonal = c(0,0,1)))
+#AIC=2250.51   AICc=2251.52   BIC=2284.85
+
+#(arima_QC.6.m<-Arima(train.QC[,6], order = c(1,0,3), seasonal = c(0,1,1)))
+#AIC=2114.69   AICc=2115.11   BIC=2134.78
+
+#(arima_QC.6.m<-Arima(train.QC[,6], order = c(1,0,3), seasonal = c(0,2,1)))
+#AIC=2110.41   AICc=2110.86   BIC=2129.92
+
+#(arima_QC.6.m<-Arima(train.QC[,6], order = c(1,0,3), seasonal = c(0,2,4)))
+#AIC=2005.74   AICc=2006.74   BIC=2035.01
+
+arima_QC.6.m<-Arima(train.QC[,6], order = c(1,0,3), seasonal = c(0,2,5))##BEST AIC
+#AIC=1980.22   AICc=1981.44   BIC=2012.74
+
+
+```
+
+```{r ARIMA predict/forecast Quebec}
+
+fcast_QC.4<-forecast(arima_QC.m)
+autoplot(fcast_QC.4)+
+  autolayer(test.QC[,4])
+
+fcast_QC.5<-forecast(arima_QC.5.m)
+autoplot(fcast_QC.5)+
+  autolayer(test.QC[,5])
+
+fcast_QC.6<-forecast(arima_QC.6.m)
+autoplot(fcast_QC.6)+
+  autolayer(test.QC[,6])
+
+```
+
+```{r ARIMA BC}
+##############################ALL cancer sites
+#(arima_BC<-auto.arima(train.BC[,4], seasonal = TRUE))
+#(arima_BC<- Arima(train.BC[,4], order = c(1,0,5), seasonal = c(0,0,1)))#auto.arima model
+#AIC=2187.68   AICc=2188.6   BIC=2217.58
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,5), seasonal = c(0,1,1)))
+#AIC=2041.8   AICc=2042.6   BIC=2067.69
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,6), seasonal = c(0,1,1)))
+#AIC=2020.01   AICc=2021.02   BIC=2049.14
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,9), seasonal = c(0,1,2)))
+#AIC=1917.45   AICc=1919.54   BIC=1959.52
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,9), seasonal = c(0,1,3)))
+#AIC=1906.1   AICc=1908.53   BIC=1951.41
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,9), seasonal = c(0,1,4)))
+#AIC=1847.06   AICc=1849.85   BIC=1895.61
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,9), seasonal = c(0,1,5)))
+#AIC=1823.34   AICc=1826.52   BIC=1875.12
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,9), seasonal = c(0,1,6)))
+#AIC=1815.42   AICc=1819.02   BIC=1870.44
+
+#(arima_BC.m<- Arima(train.BC[,4], order = c(1,0,9), seasonal = c(0,1,7)))
+#AIC=1784.21   AICc=1788.26   BIC=1842.46
+
+arima_BC.m<- Arima(train.BC[,4], order = c(1,0,9), seasonal = c(0,1,8))
+#AIC=1779.17   AICc=1783.69   BIC=1840.66
+##takes forever to run
+
+#############################################LUNGS
+#(arima_BC.5<-auto.arima(train.BC[,5], seasonal = FALSE))##better than seasonal=TRUE
+#AIC=1531.24   AICc=1531.98   BIC=1557.82
+
+#(arima_BC.5.m<- Arima(train.BC[,5], order = c(2,0,4), seasonal = c(0,1,1)))
+#AIC=1358.72   AICc=1359.53   BIC=1384.62
+
+#(arima_BC.5.m<- Arima(train.BC[,5], order = c(2,0,4), seasonal = c(1,1,1)))
+#AIC=1334.85   AICc=1335.86   BIC=1363.98
+
+#(arima_BC.5.m<- Arima(train.BC[,5], order = c(2,0,4), seasonal = c(1,1,4)))
+#AIC=1242.85   AICc=1244.64   BIC=1281.69
+
+arima_BC.5.m<- Arima(train.BC[,5], order = c(2,0,4), seasonal = c(2,1,4))###BEST AIC
+#AIC=1148.16   AICc=1150.25   BIC=1190.23
+
+################################# Colon
+#(arima_BC.6<-auto.arima(train.BC[,6], seasonal = TRUE))
+#(arima_BC.6.m<- Arima(train.BC[,6], order = c(1,0,5), seasonal = c(0,0,2)))#auto.arima model
+#AIC=1444.7   AICc=1445.83   BIC=1477.93
+
+#(arima_BC.6.m<- Arima(train.BC[,6], order = c(1,0,5), seasonal = c(0,1,2)))
+#AIC=1361.42   AICc=1362.43   BIC=1390.55
+
+#(arima_BC.6.m<- Arima(train.BC[,6], order = c(1,0,5), seasonal = c(0,1,4)))
+#AIC=1302.51   AICc=1304.01   BIC=1338.11
+
+arima_BC.6.m<- Arima(train.BC[,6], order = c(1,0,5), seasonal = c(0,1,5))##BEST AIC
+#AIC=1295.83   AICc=1297.62   BIC=1334.67
+
+```
+
+```{r ARIMA predict/forecast BC}
+
+fcast_BC.4<-forecast(arima_BC.m)
+autoplot(fcast_BC.4)+
+  autolayer(test.BC[,4])
+
+fcast_BC.5<-forecast(arima_BC.5.m)
+autoplot(fcast_BC.5)+
+  autolayer(test.BC[,5])
+
+fcast_BC.6<-forecast(arima_BC.6.m)
+autoplot(fcast_BC.6)+
+  autolayer(test.BC[,6])
+
+```
+
+
+```{r ARIMA midwest}
+##################################ALL cancer sites
+#(arima_mid<- auto.arima(train.mid[,4], seasonal= TRUE))
+#(arima_mid.m<- Arima(train.mid[,4], order = c(2,0,2), seasonal = c(1,1,0)))#auto.arima model
+#AIC=2581.3   AICc=2581.62   BIC=2602.77
+
+#(arima_mid.m<- Arima(train.mid[,4], order = c(2,0,3), seasonal = c(1,1,0)))
+#AIC=2577.45   AICc=2577.88   BIC=2602.51
+
+#(arima_mid.m<- Arima(train.mid[,4], order = c(2,0,3), seasonal = c(1,1,1)))
+#AIC=2555.31   AICc=2555.87   BIC=2583.95
+
+#(arima_mid.m<- Arima(train.mid[,4], order = c(2,0,3), seasonal = c(1,2,1)))
+#AIC=2442.21   AICc=2442.83   BIC=2470.09
+
+#(arima_mid.m<- Arima(train.mid[,4], order = c(2,0,3), seasonal = c(1,2,3)))
+#AIC=2419.11   AICc=2420.07   BIC=2453.96
+
+#(arima_mid.m<- Arima(train.mid[,4], order = c(2,0,3), seasonal = c(1,2,5)))
+#AIC=2412.21   AICc=2413.58   BIC=2454.02
+
+arima_mid.m<- Arima(train.mid[,4], order = c(2,0,3), seasonal = c(1,2,6))##no noticeable improvement from 6->8 
+#AIC=2405.48   AICc=2407.08   BIC=2450.78
+
+###########################################LUNGS
+#(arima_mid.5<- auto.arima(train.mid[,5], seasonal= TRUE))
+#(arima_mid.5.m<- Arima(train.mid[,5], order = c(5,1,2), seasonal = c(2,0,1)))##auto.arima model
+#AIC=2239.1   AICc=2240.24   BIC=2283.06
+
+#(arima_mid.5.m<- Arima(train.mid[,5], order = c(5,1,3), seasonal = c(2,0,1)))
+#AIC=2169.99   AICc=2171.12   BIC=2213.94
+
+#(arima_mid.5.m<- Arima(train.mid[,5], order = c(5,1,3), seasonal = c(2,1,1)))
+#AIC=2022.71   AICc=2023.95   BIC=2065.62
+
+#(arima_mid.5.m<- Arima(train.mid[,5], order = c(5,1,3), seasonal = c(2,1,2)))
+#AIC=2020.75   AICc=2022.2   BIC=2067.23
+
+#(arima_mid.5.m<- Arima(train.mid[,5], order = c(5,1,3), seasonal = c(2,2,2)))
+#AIC=2000.26   AICc=2001.87   BIC=2045.51
+
+#(arima_mid.5.m<- Arima(train.mid[,5], order = c(5,2,3), seasonal = c(2,2,2)))
+#AIC=1991.14   AICc=1992.75   BIC=2036.33 ##also solved warning in previous version 
+
+arima_mid.5.m<- Arima(train.mid[,5], order = c(5,2,4), seasonal = c(2,2,2))##BEST AIC
+#AIC=1971.84   AICc=1973.72   BIC=2020.52
+
+########################################## Colon
+#(arima_mid.6<- auto.arima(train.mid[,6], seasonal= TRUE))
+#(arima_mid.5.m<- Arima(train.mid[,6], order = c(2,0,0), seasonal = c(2,1,1))) ##auto.arima model
+#AIC=1904.11   AICc=1904.55   BIC=1929.17
+
+#(arima_mid.5.m<- Arima(train.mid[,6], order = c(2,0,2), seasonal = c(2,1,1)))
+#AIC=1898.68   AICc=1899.24   BIC=1927.32
+
+#(arima_mid.5.m<- Arima(train.mid[,6], order = c(2,1,2), seasonal = c(2,1,1)))
+#AIC=1891.71   AICc=1892.28   BIC=1920.32
+
+#(arima_mid.5.m<- Arima(train.mid[,6], order = c(2,1,2), seasonal = c(2,1,2)))
+#AIC=1887.73   AICc=1888.44   BIC=1919.92
+
+#(arima_mid.5.m<- Arima(train.mid[,6], order = c(2,1,2), seasonal = c(2,2,2)))
+#AIC=1851.87   AICc=1852.65   BIC=1883.19
+
+arima_mid.6.m<- Arima(train.mid[,6], order = c(2,1,2), seasonal = c(2,3,2)) ##BEST AIC
+#AIC=1840.36   AICc=1841.23   BIC=1870.74
+
+```
+
+```{r ARIMA predict/forecast midwest}
+
+fcast_mid.4<-forecast(arima_mid.m)
+autoplot(fcast_mid.4)+
+  autolayer(test.mid[,4])
+
+fcast_mid.5<-forecast(arima_mid.5.m)
+autoplot(fcast_mid.5)+
+  autolayer(test.mid[,5])
+
+fcast_mid.6<-forecast(arima_mid.6.m)
+autoplot(fcast_mid.6) +
+  autolayer(test.mid[,6])
+
+```
+
+```{r ARIMA maritimes}
+#(arima_mar<- auto.arima(train.mar[,4], seasonal = TRUE))
+#(arima_mar.m <- Arima(train.mar[,4], order = c(4,1,0) ,seasonal = c(0,0,2))) #auto.arima model
+#AIC=2201.95   AICc=2202.61   BIC=2229.38
+
+#(arima_mar.m <- Arima(train.mar[,4], order = c(4,1,1) ,seasonal = c(0,0,2)))
+#AIC=2198.94   AICc=2199.6   BIC=2226.37
+
+#(arima_mar.m <- Arima(train.mar[,4], order = c(4,1,3) ,seasonal = c(0,0,2)))
+#AIC=2131.73   AICc=2132.74   BIC=2166.02
+
+#(arima_mar.m <- Arima(train.mar[,4], order = c(4,1,3) ,seasonal = c(0,1,2)))
+#AIC=2002.72   AICc=2003.83   BIC=2036.14
+
+#(arima_mar.m <- Arima(train.mar[,4], order = c(4,1,3) ,seasonal = c(0,2,2)))
+#AIC=1916.7   AICc=1917.93   BIC=1949.17
+
+arima_mar.m <- Arima(train.mar[,4], order = c(4,1,3) ,seasonal = c(0,2,3))## BEST AIC
+#AIC=1915.16   AICc=1916.65   BIC=1950.88
+
+######################################LUNGS
+#(arima_mar.5<- auto.arima(train.mar[,5], seasonal = TRUE))
+#(arima_mar.5.m<- Arima(train.mar[,5], order = c(5,0,1), seasonal = c(0,0,2)))##auto.arima model
+#AIC=1663.09   AICc=1664.1   BIC=1697.42
+
+#(arima_mar.5.m<- Arima(train.mar[,5], order = c(5,0,1), seasonal = c(0,1,2)))
+#AIC=1581.21   AICc=1582.11   BIC=1611.33
+
+#(arima_mar.5.m<- Arima(train.mar[,5], order = c(5,0,2), seasonal = c(0,1,2)))
+#AIC=1558.89   AICc=1559.99   BIC=1592.36
+
+#(arima_mar.5.m<- Arima(train.mar[,5], order = c(5,0,2), seasonal = c(0,2,2)))
+#AIC=1516.86   AICc=1518.08   BIC=1549.38
+
+#(arima_mar.5.m<- Arima(train.mar[,5], order = c(5,0,2), seasonal = c(0,3,2)))
+#AIC=1474.06   AICc=1475.43   BIC=1505.54
+
+arima_mar.5.m<- Arima(train.mar[,5], order = c(5,0,3), seasonal = c(0,3,2))##BEST AIC
+#AIC=1472.04   AICc=1473.69   BIC=1506.66
+
+############################### Colon
+#(arima_mar.6<- auto.arima(train.mar[,6], seasonal = TRUE))
+#(arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,5), seasonal = c(0,0,1))) #auto.arima model
+#AIC=1668.67   AICc=1669.33   BIC=1696.1
+
+#(arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,5), seasonal = c(0,1,1)))
+#AIC=1596.2   AICc=1596.75   BIC=1619.59
+
+#(arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,6), seasonal = c(0,1,1)))
+#AIC=1566.62   AICc=1567.34   BIC=1593.36
+
+#(arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,10), seasonal = c(0,1,4)))
+#AIC=1497.4   AICc=1499.89   BIC=1547.53
+
+#(arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,10), seasonal = c(0,1,5)))
+#AIC=1491.06   AICc=1493.89   BIC=1544.54
+
+#(arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,10), seasonal = c(0,2,5)))
+#AIC=1471.18   AICc=1474.32   BIC=1523.13
+
+#(arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,10), seasonal = c(0,3,5)))
+#AIC=1469.12   AICc=1472.65   BIC=1519.38
+
+arima_mar.6.m<- Arima(train.mar[,6], order = c(0,1,10), seasonal = c(0,3,6))##BEST AIC
+#AIC=1462.55   AICc=1466.55   BIC=1515.95
+
+```
+
+```{r ARIMA predict/forecast Maritimes}
+
+fcast_mar.4<-forecast(arima_mar.m)
+autoplot(fcast_mar.4) +
+  autolayer(test.mar[,4])
+
+fcast_mar.5<-forecast(arima_mar.5.m)
+autoplot(fcast_mar.5) +
+  autolayer(test.mar[,5])
+
+fcast_mar.6<-forecast(arima_mar.6.m)
+autoplot(fcast_mar.6) +
+  autolayer(test.mar[,6])
+
+```
+
+```{r ARIMA Territories}
+#####################ALL cancer sites
+#(arima_terr<-auto.arima(train.terr[,4], seasonal = TRUE, stepwise = FALSE, approximation = FALSE))
+arima_terr.m<- Arima(train.terr[,4], order = c(0,0,0), seasonal = c(0,1,0))##auto.arima model
+#AIC=347.42   AICc=347.55   BIC=348.95
+##BEST AIC
+
+############################### LUNGS
+#(arima_terr.5<-auto.arima(train.terr[,5], seasonal = TRUE))
+arima_terr.5.m<- Arima(train.terr[,5], order= c(0,0,0), seasonal = c(2,0,0))##auto.arima model
+#AIC=283.85   AICc=285.1   BIC=290.29
+##BEST AIC
+
+################################# COlon
+#(arima_terr.6<-auto.arima(train.terr[,6], seasonal = TRUE))
+#>  ARIMA(2,1,0) 
+#>  AIC=346.54   AICc=347.29   BIC=351.29
+#(arima_terr.6.m<- Arima(train.terr[,5], order= c(2,1,1), seasonal = c(0,0,0)))
+#AIC=287.9   AICc=289.19   BIC=294.24
+
+#(arima_terr.6.m<- Arima(train.terr[,5], order= c(2,1,1), seasonal = c(0,1,0)))
+#AIC=266.43   AICc=267.86   BIC=272.42
+
+arima_terr.6.m<- Arima(train.terr[,5], order= c(2,1,1), seasonal = c(0,2,0))##BEST AIC
+#AIC=258.47   AICc=260.07   BIC=264.07
+```
+
+
+```{r ARIMA predict/forecast territories}
+
+fcast_terr.4<-forecast(arima_terr.m)
+autoplot(fcast_terr.4) +
+  autolayer(test.terr[,4])
+
+fcast_terr.5<-forecast(arima_terr.5.m)
+autoplot(fcast_terr.5) +
+  autolayer(test.terr[,5])
+
+
+fcast_terr.6<-forecast(arima_terr.6.m)
+autoplot(fcast_terr.6) +
+  autolayer(test.terr[,6])
+
+```
+```{r Time Series cross validation - Ontario}
+##forecast function
+f.ON<- function(y, h){forecast(arima_ON.m, h=h)}
+##explore Exogenous predictor variables with xreg
+#compare RMSE
+on.1<-tsCV(ts_ON.2[,4], f.ON, h=2)
+sqrt(mean(on.1^2, na.rm= TRUE))
+##[1] 84.76661
+sqrt(mean(residuals(f.ON(ts_ON.2, h=2))^2, na.rm=TRUE))
+####[1] 30.27293
+
+######lungs forcast
+f.ON.5<-function(y, h){forecast(arima_ON.5.m, h=h)}
+on.2<-tsCV(ts_ON.2[,5], f.ON.5, h=2)
+sqrt(mean(on.2^2, na.rm= TRUE))
+##[1] 19.05896
+sqrt(mean(residuals(f.ON.5(ts_ON.2[,5], h=2))^2, na.rm=TRUE))
+#[1] 9.144005
+#####colon
+f.ON.6<-function(y, h){forecast(arima_ON.6.m, h=h)}
+on.3<-tsCV(ts_ON.2[,6], f.ON.6, h=2)
+sqrt(mean(on.3^2, na.rm= TRUE))
+##[1] 15.02973
+sqrt(mean(residuals(f.ON.6(ts_ON.2[,6], h=2))^2, na.rm=TRUE))
+###[1] 6.616241
+```
+
+
+```{r Accuracy Ontario}
+#####################ARIMA
+
+accuracy(fcast_ON.4, test.ON[,4])
+
+accuracy(fcast_ON.5, test.ON[,5])
+
+accuracy(fcast_ON.6, test.ON[,6])
+
+
+################TSLM
+accuracy(fcast.ON.4, test.ON[,4])
+
+accuracy(fcast.ON.5, test.ON[,5])
+
+accuracy(fcast.ON.6, test.ON[,6])
+```
+NOTE: MASE all are <1
+
+```{r Accuracy Quebec}
+#####################ARIMA
+accuracy(fcast_QC.4, test.QC[,4])
+
+accuracy(fcast_QC.5, test.QC[,5])
+
+accuracy(fcast_QC.6, test.QC[,6])
+
+
+################TSLM
+accuracy(fcast.QC.4, test.QC[,4])
+
+accuracy(fcast.QC.5, test.QC[,5])
+
+accuracy(fcast.QC.6, test.QC[,6])
+```
+
+```{r Accuracy BC}
+#####################ARIMA
+accuracy(fcast_BC.4, test.BC[,4])
+
+accuracy(fcast_BC.5, test.BC[,5])
+
+accuracy(fcast_BC.6, test.BC[,6])
+
+
+################TSLM
+accuracy(fcast.BC.4, test.BC[,4])
+
+accuracy(fcast.BC.5, test.BC[,5])
+
+accuracy(fcast.BC.6, test.BC[,6])
+```
+
+```{r Accuracy Midwest}
+#####################ARIMA
+accuracy(fcast_mid.4, test.mid[,4])
+
+accuracy(fcast_mid.5, test.mid[,5])
+
+accuracy(fcast_mid.6, test.mid[,6])
+
+
+################TSLM
+accuracy(fcast.mid.4, test.mid[,4])
+
+accuracy(fcast.mid.5, test.mid[,5])
+
+accuracy(fcast.mid.6, test.mid[,6])
+```
+
+```{r Accuracy Maritimes}
+#####################ARIMA
+accuracy(fcast_mar.4, test.mar[,4])
+
+accuracy(fcast_mar.5, test.mar[,5])
+
+accuracy(fcast_mar.6, test.mar[,6])
+
+
+################TSLM
+accuracy(fcast.mar.4, test.mar[,4])
+
+accuracy(fcast.mar.5, test.mar[,5])
+
+accuracy(fcast.mar.6, test.mar[,6])
+```
+
+```{r Accuracy Territories}
+#####################ARIMA
+accuracy(fcast_terr.4, test.terr[,4])
+
+accuracy(fcast_terr.5, test.terr[,5])
+
+accuracy(fcast_terr.6, test.terr[,6])
+
+
+################TSLM
+accuracy(fcast.terr.4, test.terr[,4])
+
+accuracy(fcast.terr.5, test.terr[,5])
+
+accuracy(fcast.terr.6, test.terr[,6])
 ```
