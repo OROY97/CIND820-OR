@@ -19,7 +19,7 @@ Some preliminary analysis conducted in R and some summary statistics with strati
   
   This fits with the notion that the _"Argument frequency indicates the sampling frequency of the time series"_ as each of these locations is a _sample_ withing the given time intervals.
 
-  The initial analysis before choosing which models to try includes decomposition plots, plots of each type of cancer, tests for stationarity: ACF and PACF plots, ljung-Box test, Augmented Cicky-Fuller test, and KPSS test. All of these things had somewhat mixed results. the ACF and PACF did not indicate strictly non-stationary patterns but many showed significant lags. 
+  The initial analysis before choosing which models to try includes decomposition plots, plots of each type of cancer, tests for stationarity: ACF and PACF plots, ljung-Box test, Augmented Cicky-Fuller test, and KPSS test. All of these things had somewhat mixed results. The ACF and PACF did not indicate strictly non-stationary patterns but many showed significant lags. 
 
   In the decompostion plots when the trend is removed from the time series most of the residuals resembled a white noise process. Some of the residual plots showed a non constant variance. These mixed results lead me to try the ARIMA model as it has the ability to deal with non-stationary data in specific cases.
 
@@ -32,11 +32,11 @@ Some preliminary analysis conducted in R and some summary statistics with strati
 The data was split into test/train sets with the ts.split function in R. The models tested: 
 >TSLM - time series linear regression model
   
-  This model drew me as it allows one to look at sppecific interactions with exogenous variables. The results were not the most promising and this may have been due to the use of GEO as a feature in the regression model as well as the frequency in the time series being used in the model. I believe this could be optimized and should be reevaluated although there are many factors that may affect the ability of this models predictive capabilities for this data.
+  This model apealed to me as it allows one to look at sppecific interactions with exogenous variables. The results were not the most promising and this may have been due to the use of GEO as a feature in the regression model as well as the frequency in the time series being used in the model. I believe this could be optimized and should be reevaluated although there are many factors that may affect the ability of this models predictive capabilities for this data.
 
 >ARIMA
 
-  The ARIMA model heavily outperformed the TSLM model as can be seen in the forecast plots. This model can deal with the _seasonality_ of the data, where seasonality here is the repeated cycles of location measurements. These measurements can vary significantly from one region to the next causing repeated variation in the time series. This is shown best the the Quebec data, whereby one region has a larger value consitently ( potentially due to population/age differences in that region increasing the volume of diagnosis )
+  The ARIMA model heavily outperformed the TSLM model as can be seen in the forecast plots. This model can deal with the _seasonality_ of the data, where seasonality here is the repeated cycles of location measurements. These measurements can vary significantly from one region to the next causing repeated variation in the time series. This is shown best by the Quebec data, whereby one region has a larger value consitently ( potentially due to population/age differences in that region increasing the volume of diagnosis )
   
   The ability for each ARIMA model to be tailored to the seasonality of each dataset increased the accuracy of the forecast for each model. The ARIMA model outperformed the TSLM in every measure though notable some measures are scale dependent and should be used cautiously (or not at all) when comparing the TSLM and the ARIMA with one another. 
 
