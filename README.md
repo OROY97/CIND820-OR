@@ -20,7 +20,7 @@ The [forecast plots](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a145529
 
 ## ARIMA
 
-First each model is run with the auto.arima function to get an idea of the magnitude of the AIC and AICc. I manually increased and decreased the _order_ c(p,d,q) values and the _seasonal_ c(P,D,Q) values in the Arima function, based on the number of lags indicated in the ACF and PACF plots ranging from 1 to 7 stationarity tests ranging from 3 to 8. Using the auto.arima model as a starting point. 
+First each model is run with the auto.arima function to get an idea of the magnitude of the AIC and AICc. I manually increased and decreased the _order_ c(p,d,q) values and the _seasonal_ c(P,D,Q) values in the Arima function based on the number of lags indicated in the ACF and PACF plots ranging from 1 to 7 stationarity tests ranging from 3 to 8. Using the auto.arima model as a starting point. 
 
 I also kept in mind the magnitude of the D and Q values as they increased the most within models and the models with a higher Q,q or D values took significantly longer to train. Though the chosen models are based on the models with the lowest AIC/AICc, sometimes these values increased only marginally with each 1 unit increase of the _order_ or _seasonal_ values. 
 
@@ -38,7 +38,7 @@ I also kept in mind the magnitude of the D and Q values as they increased the mo
 
 -[ARIMA Territories](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L1080-L1104)
 
-The forecasting for this model is much superior to the current tslm models. This is sean right away as the seasonal variation in very present and that is more valuable than the very linear predictions from the tslm, which did not capture the variation felt withing the yearly interval. 
+The forecasting for this model is superior to the current tslm models. This is seen right away as the seasonal variation is very present in the forecast plot and that is more valuable than the very linear predictions from the tslm, which did not capture the variation felt withing the yearly interval. 
 
 >Note: these forecast plots do not meet standards of clarity with the test set values layered over
 >
@@ -56,4 +56,4 @@ The forecasting for this model is much superior to the current tslm models. This
 
 # Accuracy Tests
 
-There are three sets of [accuracy functions](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L1152-L1253) for each model for each of the six geographic groups. The accuracy metrics all overwhelmingly show two things, the ARIMA was more accurate than the TSLM and that withing both types of models the more specific sites of cancer had more accurate forecasts than all sites of cancer.
+There are three sets of [accuracy functions](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L1152-L1253) for each model for each of the six geographic groups. The accuracy metrics all overwhelmingly show two things, the ARIMA was more accurate than the TSLM, and that within both types of models the more specific sites of cancer had more accurate forecasts than all sites of cancer.
