@@ -13,7 +13,7 @@ some historgrams are created in R for this data set:
 
 [Quantiles for cancer incidence were created](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L107-L111) but have yet to be used.
 
-Next the dataset was [stratified](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L150-L169) into different geographic regions across Canada. Provincial borders were considered as there are provincial healthcare differences, but the local geography such as oceans, forest, plains, northern longitude etc. This lead to six different datasets:
+Next the dataset was [stratified](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L150-L169) into different geographic regions from across Canada. Provincial borders were considered as there are provincial healthcare differences, but the local geography such as oceans, forest, plains, northern longitude etc also impact chosen geographic regions. Doing this also ensured an adequate amount of observations for analysis. This lead to six different datasets:
 >[Ontario](https://github.com/OROY97/CIND820-OR/blob/R-code/cancer_ON.csv)
 >[Quebec](https://github.com/OROY97/CIND820-OR/blob/R-code/cancer_QC.csv)
 >[British Columbia](https://github.com/OROY97/CIND820-OR/blob/R-code/cancer_BC.csv)
