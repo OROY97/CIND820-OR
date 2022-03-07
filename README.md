@@ -7,7 +7,7 @@ The [chosen dataset](https://github.com/OROY97/CIND820-OR/blob/DataSets/README.m
 
 >[Data preparation](https://github.com/OROY97/CIND820-OR/blob/Data-Prep-and-Clean/README.md) was done in R. 
 
-This took the data set from 293 722 observations of 17 variables to 22 594 observations of 6 variables. Further transformation of the data set decreased the number of observations to 5226 and increased the number of variables to 8. 
+This took the data set from 293 722 observations of 17 variables to 22 594 observations of 6 variables. Further transformation of the data set decreased the number of observations to [5226 and increased the number of variables to 8.](https://github.com/OROY97/CIND820-OR/blob/main/cancer_2.2.csv)
 
 >**[Preliminary Analysis](https://github.com/OROY97/CIND820-OR/blob/Preliminary/README.md)**
 
