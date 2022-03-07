@@ -1,5 +1,5 @@
 # CIND820
-Capstone course project repository
+Capstone course project repository - [research questions](https://github.com/OROY97/CIND820-OR/tree/ResearchQs)
 
 **Predictive Analytics Project Outline**
 
