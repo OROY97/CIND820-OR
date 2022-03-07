@@ -1,7 +1,9 @@
 **Exploratory Data Analysis** 
 
-For preliminary analysis only the age-standardized rate of incidence is used as this is to help adjust for locations that have older age groups. Although it is important to note that regions with older age groups would be expected to have a higher rate of incidence even with the age standardized rate.
+For preliminary analysis, only the age-standardized rate of incidence is used as this is to help adjust for locations that have older age groups. Although it is important to note that regions with older age groups would be expected to have a higher rate of incidence even with the age standardized rate.
+
 **EDA Output**_-pandas-profiling_
+
 >[cancer_w4](https://github.com/OROY97/CIND820-OR/blob/Preliminary/output_w4.html)
 
 
@@ -9,7 +11,7 @@ For preliminary analysis only the age-standardized rate of incidence is used as 
 n_distinct(cancer_cl$GEO)
 #154
 
-To reduce cardinality of the geographic locations are stratified based on their province since we are looking at the relationship between cancer incidence and geographic location national 'peer groups' are also removed from the GEO column
+To reduce cardinality of the GEO feature, it is stratified.
 
 EDA Output for each file:
 uses Python pandas_profiling 
