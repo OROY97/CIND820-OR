@@ -1,45 +1,23 @@
-# CIND820
-Capstone course project repository
+# Time Series Transformation and Analysis
 
-classification and regression analysis & predictive analytics project 
+Each dataset was turned into a [time series](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L174-L194), initially the lack of frequency factor lead to time sereies matrices with only 15 observations. After adding the frequency equal to the number of distinct values in the geography column, solved the issue and maintained the integrity of the data. This can be seen in the identical transformation of char strings in the GEO column to the correct number of corresponding integers.
 
-## Preliminary analysis for CIND 820
-USING R
-Removed columns from cancer incidence dataset that did not contain information 
+The resulting plots displayed all the features on the same axis so the [decomposition plots](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L174-L194) were done with three of the 5 features of cancer incidence per regions. 
+>NOTE: that not all residual plots are white noise
 
-cancer_table<- subset(cancer_incidence, select = -c(DGUID,UOM_ID,SCALAR_FACTOR,SCALAR_ID, VECTOR, COORDINATE, STATUS, SYMBOL, TERMINATED, DECIMALS))
+Each [time-series is plotted](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L233-L260) ordered by typer of cancer in order to compare the potential trends in these incidence rates between the different regions.
 
-293722 observations while the dataset is formatted this way
+##[ACF and PACF Plots](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L266-L320)
 
-67782 observations after some cleaning 
-> cancer_cl.csv
+All of the time-series show significant lags
 
-Characteristics columns was brought to three values of interest
+##Tests for Stationarity
 
-1. Cancer incidence (age-standardized rate per 100,000 population)
-2. Cancer incidence (rate per 100,00 population)
-3. Number of new cancer cases
+[Ljung-Box test](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L324-L351): non stationary will be low p-value
 
-Spread table so that these characteristics and their values belong in their own column
+[Augmented Dickey-Fuller](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L358-L385): non stationary has a large p-value
 
-For preliminary analysis only the age-standardized rate of incidence is used as this is to help adjust for locations that have older age groups. Although it is important to note that regions with older age groups would be expected to have a higher rate of incidence even with the age standardized rate.
->cancer_w4
+[KPSS](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L389-L417): low p-value indicates non-stationarity
+>differs with level/trend stationarity tests
 
 
-##count number of region in occupation and cancer
-n_distinct(cancer_cl$GEO)
-#154
-
-To reduce cardinality of the geographic locations they are divided into groups based on their province
-since we are looking at the relationship between cancer incidence and geographic location national 'peer groups' are also removed from the GEO column
->cancer_ON
->cancer_QC
->cancer_AB
->cancer_BC
->cancer_MB
->cancer_maritimes
->cancer_SK
->cancer_territories
-
-EDA for each file:
-uses Python pandas_profiling 
