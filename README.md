@@ -1,6 +1,8 @@
 # CIND820
 Capstone course project repository - [research questions](https://github.com/OROY97/CIND820-OR/tree/ResearchQs)
 
+>**NOTE: all links on main read.me lead to branches and all links in a branch read.me file link to code**
+
 **Predictive Analytics Project Outline**
 
 The [chosen dataset](https://github.com/OROY97/CIND820-OR/blob/DataSets/README.md) contains information about the incidence of invasvive cancer sites across all regions of Canada. This dataset has repeated time intervals of two year periods from 2001/2003 until 2013/2015.
