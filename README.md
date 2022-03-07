@@ -20,4 +20,7 @@ All of the time-series show significant lags
 [KPSS](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L389-L417): low p-value indicates non-stationarity
 >differs with level/trend stationarity tests
 
+##Stationarity
 
+Will rerun models with differenced data to see if the model improves 
+>see library("fUnitRoot") -> diff and ndiff
