@@ -1,6 +1,6 @@
 # Time Series Transformation and Analysis
 
-Each dataset was turned into a [time series](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L174-L194) initially the lack of frequency factor lead to time sereies matrices with only 15 observations. Once the frequency was set to equal to the number of distinct values in the GEO column this solved the issue and maintained the integrity of the data. This can be seen in the identical transformation of char strings in the GEO column to the correct number of corresponding integers.
+Each dataset was turned into a [time series](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L174-L194) (see above files for df transformation results) initially the lack of frequency factor lead to time sereies matrices with only 15 observations. Once the frequency was set to equal to the number of distinct values in the GEO column this solved the issue and maintained the integrity of the data. This can be seen in the identical transformation of char strings in the GEO column to the correct number of corresponding integers.
 
 The resulting plots displayed all the features on the same axis so the [decomposition plots](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L174-L194) were done with three of the 5 features of cancer incidence per regions. 
 >NOTE: that not all residual plots are white noise
