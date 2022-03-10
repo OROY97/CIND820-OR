@@ -1,4 +1,4 @@
-**Data Preparation and Transformation**
+# Data Preparation and Transformation
 
 First there are many feature columns that are arbitrary as they denote the same meaning as the columns of interest but have less meaning. [These were removed](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L43) and [cleaned](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L47-L59) before a very [preliminary look](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L63-L70) at the data. 
 
