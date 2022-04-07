@@ -1,59 +1,50 @@
-# Modeling
-
-First the each time-series dataset is [split into test set and train set](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L421-L445) with the equivilent number of 2 periods worth of observations. 
-
-There are three models for each geographic group:
-- All cancer sites
-- Lung cancer sites
-- Colon cancer sites
+# Evaluation
 
 ## TSLM
 
-[Each model is trained on only the training data](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L450-L502) 
+When the models are forcasted over the test values the ARIMA model out performed the TSLM models in accuracy
+The TSLM models were faster to train, as they are less computationally intense.
 
-This is a linear regression model for a time series where the features of interest that are independant to the incidence of cancer are GEO and Sex. I believe this model is inherently flawed currently as the GEO varaible is already represented in the time series as the frequency. I plan to go back and see if differenced data and/or different coefficient features are selected.
-
-**Forecast plotting**
->Note: these forecast plots do not meet standards of clarity with the test set values layered over
-
-The [forecast plots](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L508-L672) show that these tslm models are not a great match with the test data. 
+The [forecast plots](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=%60%60%60-,Part%208%3A%20TSLM%20forecasting,%60%60%60,-Part%209%3A%20ARIMA) for TSLM 
 
 ## ARIMA
+ The forecast plots for [ON](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=fcast_ON.4%3C%2Dforecast(arima_ON,test%20%3D%20test.ON%5B%2C6%5D)), [QC](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=fcast_QC.4%3C%2Dforecast(arima_QC,test%20%3D%20test.QC%5B%2C6%5D)), [BC](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=fcast_BC.4%3C%2Dforecast(arima_BC,test%20%3D%20test.BC%5B%2C6%5D)), [Midwest](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=fcast_mid.4%3C%2Dforecast(arima_mid,test%20%3D%20test.mid%5B%2C6%5D)), [Maritimes](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=fcast_mar.4%3C%2Dforecast(arima_mar,test%20%3D%20test.mar%5B%2C6%5D)), [Territories](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=fcast_terr.4%3C%2Dforecast(arima_terr,test%20%3D%20test.terr%5B%2C6%5D))
 
-First each model is run with the auto.arima function to get an idea of the magnitude of the AIC and AICc. I manually increased and decreased the _order_ c(p,d,q) values and the _seasonal_ c(P,D,Q) values in the Arima function based on the number of lags indicated in the ACF and PACF plots ranging from 1 to 7 stationarity tests ranging from 3 to 8. Using the auto.arima model as a starting point. 
 
-I also kept in mind the magnitude of the D and Q values as they increased the most within models and the models with a higher Q,q or D values took significantly longer to train. Though the chosen models are based on the models with the lowest AIC/AICc, sometimes these values increased only marginally with each 1 unit increase of the _order_ or _seasonal_ values. 
+# Effectiveness
 
->Also noting that larger data sets, example: Ontario vs Territories, models took more time to train.
+The accuracy Measures decisively say that the ARIMA model is more effective at predicting the test values, and that the specific cancer sites are usually easier to predict compared to the time series including all invasive cancer sites. The Models are compared mainly using MAPE and MASE measures for accuracy but the RMSE is used to evaluate the train vs test set measures for accuracy as an indicator for overfitting.
 
--[ARIMA Ontario](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L677-L733)
+[accuracy measures](https://github.com/OROY97/CIND820-OR/blob/eb29e0148dde8017ff6bae8f3b364c230caea3cf/PROJECT820.rmd#L1550-#1666)
 
--[ARIMA Quebec](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L752-L807)
+# Efficiency
+The ARIMA models take more time to train when the order numbers increase in magnitude, they get more computationally expensive. The train times were [measured](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=tic(),toc()) using the tic() and toc() functions from the tictoc() library.
 
--[ARIMA British Columbia](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L828-L890)
+ARIMA Model |	Train Time Elapsed (seconds) |	TSLM Model |	Train Time Elapsed (seconds)
+---|---|---|---
+arima_ON.m |	155.7 |	tsr_ON	| 0.02
+arima_ON.5.m	| 271.01 |	tsr_ON.5 |	0.0
+arima_ON.6.m	| 102.52 |	tsr_ON.6 |	0.01
+arima_QC.m |	3.08	| tsr_QC |	0.0
+arima_QC.5.m	| 121.18 |	tsr_QC.5 |	0.01
+arima_QC.6.m |	92.55	| tsr_QC.6 |	0.0
+arima_BC.m	| 301.65 |	tsr_BC	| 0.02
+arima_BC.5.m	| 73.2 |	tsr_BC.5 |	0.02
+arima_BC.6.m |	41.0	| tsr_BC.6 |	0.0
+arima_mid.m	 | 922.19 |	tsr_mid |	0.02
+arima_mid.5.m	| 30.97	| tsr_mid.5	| 0.02
+arima_mid.6.m	| 22.38 |	tsr_mid.6	| 0.01
+arima_mar.m	| 28.71 |	tsr_mar |	0.02
+arima_mar.5.m	 | 12.67 |	tsr_mar.5 |	0.02
+arima_mar.6.m	| 782.44 |	tsr_mar.6	| 0.0
+arima_terr.m	| 0.01 |	tsr_terr	| 0.02
+arima_terr.5.m |	0.01 |	tsr_terr.5	| 0.0
+arima_terr.6.m	| 0.03 |	tsr_terr.6 |	0.01
 
--[ARIMA Midwest](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L911-L976)
 
--[ARIMA Maritimes](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L996-L1060)
+# Stability
 
--[ARIMA Territories](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L1080-L1104)
+As the ARIMA model was the most successful and there are 18 models the TSLM was not further evaluated. The ARIMA models may be subject to some overfitting making it likely that they will not be able to predict so much farther into the future while maintain their accuracy, as is the way of many predictive models. A larger window of time may unveild more consistent patterns but smoothing technique may also be used to determine a less "wiggly" trend.
 
-The forecasting for this model is superior to the current tslm models. This is seen right away as the seasonal variation is very present in the forecast plot and that is more valuable than the very linear predictions from the tslm, which did not capture the variation felt withing the yearly interval. 
+The unit root tests for the order values of the ARIMA models show that many of the [inverse unit roots](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=Part%2012%3A%20Stability,arima_terr.6.m) follow closely along the unit circle. This also indicates an overfit type scenario. Making the models more accurate for the variation across locations but less robust over time. Few models displayed any inverse roots outside of the unit circle: only ON all invasive cancer sites, and colon cancer sites as well as Midwest' all invasive cancer sites.
 
->Note: these forecast plots do not meet standards of clarity with the test set values layered over
->
--[Ontario forecast](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L738-L748)
-
--[Quebec forecast](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L812-L824)
-
--[BC forecast](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L894-L906)
-
--[Midwest forecast](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L980-L992)
-
--[Maritimes forecast](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L1064-L1076)
-
--[Territories forecast](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L1108-L1121)
-
-# Accuracy Tests
-
-There are three sets of [accuracy functions](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L1152-L1253) for each model for each of the six geographic groups. The accuracy metrics all overwhelmingly show two things, the ARIMA was more accurate than the TSLM, and that within both types of models the more specific sites of cancer had more accurate forecasts than all sites of cancer.
