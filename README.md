@@ -21,7 +21,7 @@ Some preliminary analysis conducted in R and some summary statistics with strati
   
   This fits with the notion that the _"Argument frequency indicates the sampling frequency of the time series"_ as each of these locations is a _sample_ withing the given time intervals.
 
-  The initial analysis before choosing which models to try includes decomposition plots, plots of each type of cancer, tests for stationarity: ACF and PACF plots, ljung-Box test, Augmented Cicky-Fuller test, and KPSS test. All of these things had somewhat mixed results. The ACF and PACF did not indicate strictly non-stationary patterns but many showed significant lags. 
+  The initial analysis before choosing which models to try includes decomposition plots, plots of each type of cancer, tests for stationarity: ACF and PACF plots, ljung-Box test, Augmented Dicky-Fuller test, and KPSS test. All of these things had somewhat mixed results. The ACF and PACF did not indicate strictly non-stationary patterns but many showed significant lags. 
 
   In the decompostion plots when the trend is removed from the time series most of the residuals resembled a white noise process. Some of the residual plots showed a non constant variance. These mixed results lead me to try the ARIMA model as it has the ability to deal with non-stationary data in specific cases.
 
