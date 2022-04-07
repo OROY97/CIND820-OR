@@ -7,6 +7,8 @@ The resulting plots displayed all the features on the same axis so the [decompos
 
 Each [time-series is plotted](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L233-L260) were ordered by typer of cancer in order to compare the potential trends in these incidence rates between the different regions.
 
+The time sereis were [smoothed and plotted](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=%60%60%60-,%60%60%60%7Br%20Ontario%20Smooth%7D,%60%60%60,-Part%204B%3A%20Differencing) using "loess" parameter.
+
 ##[ACF and PACF Plots](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L266-L320)
 
 All of the time-series show significant lags
@@ -22,5 +24,4 @@ All of the time-series show significant lags
 
 ##Stationarity
 
-Will rerun models with differenced data to see if the model improves 
->see library("fUnitRoot") -> diff and ndiff
+The data was not stationarized for this analysis but [when differenced](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=%60%60%60-,Part%204B%3A%20Differencing,%60%60%60,-Part%205%3A%20Stationary) it does produce more stationary data, however the [ACF and PACF](https://github.com/OROY97/CIND820-OR/blob/main/PROJECT820.rmd#:~:text=%60%60%60%7Br%20preliminary%20diff%20time%20series,ts_ter.dif.6%2C%20type%3D%20%22partial%22)) for the differenced processes still show significant lags.
