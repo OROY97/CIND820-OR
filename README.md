@@ -19,7 +19,7 @@ Some preliminary analysis conducted in R and some summary statistics with strati
 
   Time series transformation and analysis was done in R with the stratified data. The frequency feature of the transformation was denoted by the number of distinct values in the GEO feature of the data. This was done as the data collected repeated for each location as opposed to yearly data collected on a monthly interval. This data's _interval_ is the length of the number of location records collected every year or so. 
   
-  This fits with the notion that the _"Argument frequency indicates the sampling frequency of the time series"_ as each of these locations is a _sample_ withing the given time intervals.
+  This fits with the notion that the _"Argument frequency indicates the sampling frequency of the time series"_ as each of these locations is a _sample_ within the given time intervals.
 
   The initial analysis before choosing which models to try includes decomposition plots, plots of each type of cancer, tests for stationarity: ACF and PACF plots, ljung-Box test, Augmented Dicky-Fuller test, and KPSS test. All of these things had somewhat mixed results. The ACF and PACF did not indicate strictly non-stationary patterns but many showed significant lags. 
 
