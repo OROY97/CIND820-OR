@@ -1,6 +1,6 @@
 # Modeling
 
-First the each time-series dataset is [split into test set and train set](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L421-L445) with the equivilent number of 2 periods worth of observations. 
+First each time-series dataset is [split into test set and train set](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a14552956481c2849766c92624953f/PROJECT820.rmd#L421-L445) with the equivilent number of 2 periods worth of observations. 
 
 There are three models for each geographic group:
 - All cancer sites
@@ -22,7 +22,7 @@ The [forecast plots](https://github.com/OROY97/CIND820-OR/blob/1117ae88d1a145529
 
 First each model is run with the auto.arima function to get an idea of the magnitude of the AIC and AICc. I manually increased and decreased the _order_ c(p,d,q) values and the _seasonal_ c(P,D,Q) values in the Arima function based on the number of lags indicated in the ACF and PACF plots ranging from 1 to 7 stationarity tests ranging from 3 to 8. Using the auto.arima model as a starting point. 
 
-I also kept in mind the magnitude of the D and Q values as they increased the most within models and the models with a higher Q,q or D values took significantly longer to train. Though the chosen models are based on the models with the lowest AIC/AICc, sometimes these values increased only marginally with each 1 unit increase of the _order_ or _seasonal_ values. 
+I also kept in mind the magnitude of the D and Q values as they increased the most within models and the models with a higher Q,q or D value took significantly longer to train. Though the chosen models are based on the models with the lowest AIC/AICc, sometimes these values only increased marginally with each 1 unit increase of the _order_ or _seasonal_ values. 
 
 >Also noting that larger data sets, example: Ontario vs Territories, models took more time to train.
 
