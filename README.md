@@ -25,7 +25,7 @@ Some preliminary analysis conducted in R and some summary statistics with strati
 
   In the decompostion plots when the trend is removed from the time series most of the residuals resembled a white noise process. Some of the residual plots showed a non constant variance. These mixed results lead me to try the ARIMA model as it has the ability to deal with non-stationary data in specific cases.
 
-**NOTE** Stationarity in these sets of data may indicated that there is an equal liklihood of getting diagnosed with cancer in any location with that area/region.
+**NOTE** Stationarity in these sets of data indicated that there is an equal liklihood of getting diagnosed with cancer in any location with that area/region.
 
 >**[Models](https://github.com/OROY97/CIND820-OR/blob/Models/README.md)**
 
